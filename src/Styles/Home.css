@@ -88,10 +88,6 @@
   min-height: 100vh;
 }
 
-.body_text {
-  width: 100%;
-}
-
 .body_text div:nth-child(1) {
   font-size: 2.4rem;
   color: #333;
@@ -147,7 +143,6 @@
 .map_container {
   min-height: 50vh;
   min-width: 100vw;
-  position: absolute;
   background: url(../assets/mapbg.jpg) no-repeat center/cover;
   left: 0;
   margin-top: -11.5%;
@@ -241,4 +236,69 @@
   z-index: 1;
   height: 200px;
   width: 200px;
+}
+
+/*Footer*/
+footer {
+  padding: 2.5rem 5.4rem;
+  background-color: #131212;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cut_footer {
+  margin: 10.4rem 0;
+}
+
+.footer_inp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.9rem 0;
+}
+
+.footer_inp input[type=email]{
+  height: 45px;
+  width: 300px;
+  border: none;
+  outline: none;
+  padding: 0 1.4rem;
+}
+
+.footer_inp input[type=submit] {
+  height: 45px;
+  width: 150px;
+  background-color: black;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+
+.footer nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.footer nav .footer_links {
+  text-decoration: none;
+  color: #fff;
+  margin: 0 1.3rem;
+}
+
+.copy {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  background-color: black;
+  bottom: -80px;
+  left: 0;
+  margin: 2.3rem 0;
+  padding: 1.3rem 0;
 }

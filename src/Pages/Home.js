@@ -7,11 +7,13 @@ import "../Styles/Home.css";
 const Home = () => {
   return (
     <div className="container">
-      <img src={WhiteBg1} alt="Parking Lot" className="bg_img"/>
+      <img src={WhiteBg1} alt="Parking Lot" className="bg_img" />
       <div className="container_content">
         <Navbar />
         <Body />
-        <Footer />
+        <div className="cut_footer">
+          <Footer />
+        </div>
       </div>
     </div>
   );

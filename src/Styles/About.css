@@ -1,0 +1,88 @@
+.about_container {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-family: Yu Gothic;
+  background: url("../assets/Parking\ Lot.png") no-repeat center/cover;
+}
+
+.about_content {
+  padding: 1.5rem 5.4rem;
+  min-height: 100vh;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.897);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.about_content_body {
+  margin: 3.2rem 0;
+}
+
+.about_intro {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.about_intro h1 {
+  font-size: 5.4rem;
+}
+
+.about_intro p {
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+
+section {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4.5rem 0rem;
+}
+
+section .about_selection_cards {
+  background-color: #fff;
+  color: #333;
+  width: 350px;
+  overflow-x: hidden;
+  padding: 0.8rem 0.5rem;
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+section .about_selection_cards:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 0, 0, 0.911);
+    color: #fff;
+}
+
+section .about_selection_cards:hover i {
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.911);
+}
+
+.about_section_header {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.about_section_header i {
+  background-color: black;
+  color: #fff;
+  height: 35px;
+  width: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50%;
+}
+
+.about_section_body li {
+  margin: 0.5rem 0;
+}
+
