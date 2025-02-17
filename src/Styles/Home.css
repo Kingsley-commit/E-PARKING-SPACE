@@ -1,11 +1,21 @@
 .container {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
 }
 
-.image_blur {
+.container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #333;
 }
 
 .bg_img {
-  position: fixed;
+  position: absolute;
   z-index: -1;
   height: 100%;
   width: 100%;
@@ -17,8 +27,9 @@
   min-width: 100vw;
   min-height: 100vh;
   padding: 1.5rem 5.4rem;
-  position: fixed;
-  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .logo_design {
@@ -30,7 +41,7 @@
 .logo_design div {
   height: 50px;
   width: 50px;
-  background-color: dodgerblue;
+  background-color: #333;
   border-radius: 50px;
   display: flex;
   justify-content: center;
@@ -73,62 +84,28 @@
 }
 
 .body_content {
-  width: 550px;
+  width: 650px;
+  min-height: 100vh;
 }
 
 .body_text {
   width: 100%;
 }
 
-.body_text div {
-  font-size: 4.4rem;
-  font-weight: lighter;
+.body_text div:nth-child(1) {
+  font-size: 2.4rem;
+  color: #333;
 }
 
-.body_text h1 {
-  font-size: 4.4rem;
+.body_text div:nth-child(1) h1 {
+  margin: 1.3rem 0;
 }
 
-.list_vehicles {
-  margin: 1rem 0;
-  display: flex;
-  justify-content: flex-start;
-  gap: 1.5rem;
-}
-
-.list_vehicles button {
-  background-color: #fff;
-  height: 100px;
-  width: 100px;
-  font-size: 1.5rem;
-  margin: 1.8rem 0;
-  border: none;
-  border-radius: 15px;
-  transition: 0.5s;
-}
-
-.list_vehicles button:hover {
-  transform: scale(1.1);
-}
-
-.list_vehicles button:nth-child(1) {
-  background-color: dodgerblue;
-  color: #fff;
-}
-
-.list_vehicles button:nth-child(1):hover {
-  background-color: #fff;
-  color: black;
-}
-
-.list_vehicles button:nth-child(2):hover {
-  background-color: dodgerblue;
-  color: #fff;
-}
-
-.list_vehicles button:nth-child(3):hover {
-  background-color: dodgerblue;
-  color: #fff;
+.body_text div p {
+  margin: 2.3rem 0;
+  line-height: 1.5rem;
+  color: #333;
+  width: 550px;
 }
 
 .check_button {
@@ -137,22 +114,23 @@
   border-radius: 50px;
   outline: none;
   border: none;
-  background-color: dodgerblue;
+  background-color: #333;
   color: #fff;
   transition: 0.5s;
 }
 
 .check_button:hover {
     background-color: #fff;
-    color: dodgerblue;
+    color: #333;
 }
 
 .body_content .car_image {
-  position: fixed;
-  right: 10%;
-  top: -18%;
+  position: absolute;
+  right: 8%;
+  top: -10%;
   height: auto;
   width: 30%;
+  z-index: -1;
   animation: 0.8s car ease-in-out forwards;
 }
 
@@ -165,5 +143,102 @@
   }
 }
 
-/*Auto Slider*/
+/*Map_container*/
+.map_container {
+  min-height: 50vh;
+  min-width: 100vw;
+  position: absolute;
+  background: url(../assets/mapbg.jpg) no-repeat center/cover;
+  left: 0;
+  margin-top: -11.5%;
+  z-index: 1;
+  position: absolute;
+  left: 0;
+}
 
+.map_content {
+  position: relative;
+  overflow-x: hidden;
+  padding: 1.5rem 5.4rem;
+}
+
+.blur {
+  background-color: rgba(0, 0, 0, 0.87);
+  position: absolute;
+  min-height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+.map_content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 2.5rem;
+  z-index: 1;
+}
+
+.map_content .intro {
+  width: 35 0px;
+  line-height: 1.9rem;
+}
+
+.map_content .intro h1{
+  font-size: 2.4rem;
+  margin: 1.2rem 0;
+}
+
+.map_content .intro button {
+  height: 45px;
+  width: 250px;
+  background-color: #141414;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  margin: 0.8rem 0;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.map_content .intro button:hover {
+  background-color: #fff;
+  color: #141414;
+}
+
+.map_image_container {
+  position: relative;
+  width: 300px; /* Adjust based on your preference */
+  height: 290px;
+}
+
+.map_image_container img {
+  position: absolute; /* Adjust image size */
+  height: auto;
+  transition: 0.3s ease-in-out;
+  border-radius: 50%;
+}
+
+.map_image_container img:nth-child(1) {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+}
+
+.map_image_container img:nth-child(2) {
+  top: 5px;
+  left: 250px;
+  width: 190px;
+  height: 190px;
+  z-index: 2;
+}
+
+.map_image_container img:nth-child(3) {
+  top: 100px;
+  left: 190px;
+  z-index: 1;
+  height: 200px;
+  width: 200px;
+}
