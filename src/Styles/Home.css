@@ -1,0 +1,169 @@
+.container {
+}
+
+.image_blur {
+}
+
+.bg_img {
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+
+.container_content {
+  background-color: rgba(0, 0, 0, 0.137);
+  color: #fff;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 1.5rem 5.4rem;
+  position: fixed;
+  overflow-y: auto;
+}
+
+.logo_design {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo_design div {
+  height: 50px;
+  width: 50px;
+  background-color: dodgerblue;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.navbar_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar_container nav .nav_link {
+  text-decoration: none;
+  margin: 0 1.9rem;
+  color: #fff;
+}
+
+.button_container button {
+  margin: 0 1.3rem;
+  height: 40px;
+  width: 130px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  font-size: 0.9rem;
+}
+
+.button_container button:first-child {
+  border: 1px solid white;
+  background: transparent;
+  color: #fff;
+}
+
+/*Body*/
+.body_container {
+  margin: 4.8rem 0;
+}
+
+.body_content {
+  width: 550px;
+}
+
+.body_text {
+  width: 100%;
+}
+
+.body_text div {
+  font-size: 4.4rem;
+  font-weight: lighter;
+}
+
+.body_text h1 {
+  font-size: 4.4rem;
+}
+
+.list_vehicles {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 1.5rem;
+}
+
+.list_vehicles button {
+  background-color: #fff;
+  height: 100px;
+  width: 100px;
+  font-size: 1.5rem;
+  margin: 1.8rem 0;
+  border: none;
+  border-radius: 15px;
+  transition: 0.5s;
+}
+
+.list_vehicles button:hover {
+  transform: scale(1.1);
+}
+
+.list_vehicles button:nth-child(1) {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.list_vehicles button:nth-child(1):hover {
+  background-color: #fff;
+  color: black;
+}
+
+.list_vehicles button:nth-child(2):hover {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.list_vehicles button:nth-child(3):hover {
+  background-color: dodgerblue;
+  color: #fff;
+}
+
+.check_button {
+  height: 50px;
+  width: 400px;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  background-color: dodgerblue;
+  color: #fff;
+  transition: 0.5s;
+}
+
+.check_button:hover {
+    background-color: #fff;
+    color: dodgerblue;
+}
+
+.body_content .car_image {
+  position: fixed;
+  right: 10%;
+  top: -18%;
+  height: auto;
+  width: 30%;
+  animation: 0.8s car ease-in-out forwards;
+}
+
+@keyframes car {
+  from {
+    transform: translateX(100%) rotate(-90deg);
+  }
+  to {
+    transform: translateX(0) rotate(-90deg);
+  }
+}
+
+/*Auto Slider*/
+
