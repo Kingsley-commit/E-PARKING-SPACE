@@ -41,8 +41,8 @@ const Navbar = () => {
         </Link>
       </nav>
       <div className="button_container">
-        <button onClick={loginPage}>Log In</button>
-        <button onClick={signinpage}>Sign In</button>
+        <button onClick={signinpage}>Log In</button>
+        <button onClick={loginPage}>Sign In</button>
       </div>
     </motion.div>
   );
