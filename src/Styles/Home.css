@@ -72,12 +72,15 @@
   font-size: 0.9rem;
 }
 
-.button_container button:first-child {
-  border: 1px solid white;
-  background: transparent;
+.button_container button:nth-child(1) {
+  background-color: transparent;
+  border: 1px solid #fff;
   color: #fff;
 }
 
+.button_container button:nth-child(2) {
+  color: #333;
+}
 /*Body*/
 .body_container {
   margin: 4.8rem 0;

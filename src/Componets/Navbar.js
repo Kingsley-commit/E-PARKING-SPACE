@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "../Styles/Home.css";
 const Navbar = () => {
+  //Navigation
+  const navigate = useNavigate();
+  //Logiin page
+  const loginPage = () => {
+    navigate("/login");
+  };
+
+  //Signin page
+  const signinpage = () => {
+    navigate("/signin");
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -30,8 +41,8 @@ const Navbar = () => {
         </Link>
       </nav>
       <div className="button_container">
-        <button>Log In</button>
-        <button>Sign In</button>
+        <button onClick={loginPage}>Log In</button>
+        <button onClick={signinpage}>Sign In</button>
       </div>
     </motion.div>
   );
