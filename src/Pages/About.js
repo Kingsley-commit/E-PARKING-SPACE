@@ -1,6 +1,6 @@
-import Navbar from "../Componets/Navbar";
-import Aboutbdy from "../Componets/Aboutbdy";
-import Footer from "../Componets/Footer";
+import Navbar from "../Componets/BodiesComponent/Navbar";
+import Aboutbdy from "../Componets/AboutusComponent/Aboutbdy";
+import Footer from "../Componets/BodiesComponent/Footer";
 import "../Styles/About.css";
 const About = () => {
   return (

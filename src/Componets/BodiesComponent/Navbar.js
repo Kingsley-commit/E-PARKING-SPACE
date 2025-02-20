@@ -1,17 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import "../Styles/Home.css";
+import "../../Styles/Home.css";
 const Navbar = () => {
   //Navigation
   const navigate = useNavigate();
-  //Logiin page
+  //Login signin
   const loginPage = () => {
-    navigate("/login");
+    navigate("/LoginComponent");
   };
 
-  //Signin page
+  //login page
   const signinpage = () => {
-    navigate("/signin");
+    navigate("/signup");
   };
   return (
     <motion.div
@@ -27,22 +27,27 @@ const Navbar = () => {
         </div>
         <h1>EParking System</h1>
       </div>
+      
       <nav>
         <Link to="/" className="nav_link">
-          Home
+          <span>Home</span>
         </Link>
-        |
+        
         <Link to="/About" className="nav_link">
-          About
+          <span>About</span>
         </Link>
-        |
+        
         <Link to="/Dashboard" className="nav_link">
-          Dashboard
+          <span>Dashboard</span>
         </Link>
       </nav>
+
+      <div className="sidenav_icon">
+        &#9776;
+      </div>
       <div className="button_container">
-        <button onClick={signinpage}>Log In</button>
-        <button onClick={loginPage}>Sign In</button>
+        <button onClick={loginPage}>Log In</button>
+        <button onClick={signinpage}>Sign In</button>
       </div>
     </motion.div>
   );

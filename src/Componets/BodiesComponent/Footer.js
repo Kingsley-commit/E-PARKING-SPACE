@@ -1,4 +1,4 @@
-import "../Styles/Home.css";
+import "../../Styles/Home.css";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 const Footer = () => {
@@ -9,21 +9,13 @@ const Footer = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
       viewport={{ once: true }}
-      className="footer"           
+      className="footer"
     >
       <div className="logo_design">
         <div>
           <i className="fa-solid fa-car"></i>
         </div>
         <h1>E Parking System</h1>
-      </div>
-
-      <div className="footer_form">
-        <label>Subscribe</label>
-        <div className="footer_inp">
-          <input type="email" placeholder="Enter Your Email" />
-          <input type="submit" value="Subscribe"></input>
-        </div>
       </div>
 
       <nav>
@@ -35,10 +27,19 @@ const Footer = () => {
           About
         </Link>
 
-        <Link to="/About" className="footer_links">
+        <Link to="/Dashboard" className="footer_links">
           Dashboard
         </Link>
       </nav>
+
+      <div className="footer_form">
+        <label>Subscribe</label>
+        <div className="footer_inp">
+          <input type="email" placeholder="Enter Your Email" />
+          <input type="submit" value="Subscribe"></input>
+        </div>
+      </div>
+
       <div className="copy">
         &copy;
         {date.toLocaleDateString("en-US", {

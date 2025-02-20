@@ -1,6 +1,6 @@
-import carv from "../assets/carv.png";
+import carv from "../../assets/carv.png";
 import Map from "./Maps";
-import "../Styles/Home.css";
+import "../../Styles/Home.css";
 import { motion } from "framer-motion";
 const Body = () => {
   return (
@@ -16,7 +16,7 @@ const Body = () => {
           <div>
             Find Your<h1>Parking Space!</h1>
           </div>
-          <div>
+          <div className="body_text_para">
             <p>
               The EParking System is a web-based platform designed to
               simplify and enhance the parking experience. By leveraging APIs

@@ -1,3 +1,4 @@
+/*About container*/
 .about_container {
   position: relative;
   overflow-y: auto;
@@ -7,9 +8,20 @@
   background: url("../assets/Parking\ Lot.png") no-repeat center/cover;
 }
 
+.about_container::-webkit-scrollbar {
+  width: 5px;
+  background-color: lightgray;
+}
+
+.about_container::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 5px;
+}
+
 .about_content {
-  padding: 1.5rem 5.4rem;
   min-height: 100vh;
+  min-width: 100vw;
+  width: 100%;
   color: #fff;
   background-color: rgba(0, 0, 0, 0.897);
   position: absolute;
@@ -22,46 +34,155 @@
 }
 
 .about_intro {
-  display: grid;
-  grid-template-columns: 40% 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .about_intro h1 {
-  font-size: 5.4rem;
+  font-size: 3.5rem;
 }
 
 .about_intro p {
   font-size: 1rem;
   line-height: 1.7rem;
+  text-align: center;
+  width: 600px;
 }
 
-section {
-  display: grid;
-  grid-template-columns: 33% 33% 33%;
-  justify-content: space-between;
-  align-items: center;
-  margin: 4.5rem 0rem;
-}
-
-section .about_selection_cards {
-  background-color: #fff;
-  color: #333;
-  width: 350px;
-  overflow-x: hidden;
-  padding: 0.8rem 0.5rem;
-  border-radius: 15px;
+.about_intro button{
+  height: 45px;
+  width: 250px;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  margin: 1.2rem 0;
+  background-color: rgb(3, 3, 3);
+  color: #fff;
   transition: 0.5s;
 }
 
+.about_intro button:hover {
+  background-color: #fff;
+  color: rgb(3, 3, 3);
+  cursor: pointer;
+}
+
+/*Responsive phone view for about us intro*/
+@media (max-width: 768px) {
+  .about_intro p {
+    width: 100%;
+    padding: 0 0.9rem;
+  }
+}
+/*User Slider*/
+.user_content {
+}
+
+.users_box {
+  white-space: nowrap;
+  overflow-x: auto;
+  position: relative;
+  display: flex;
+  gap: 2.8rem;
+  margin: 2.5rem 0;
+}
+
+.users_box::-webkit-scrollbar {
+  height: 0px;
+}
+
+.user {
+  height: 250px;
+  min-width: 200px;
+  background-color: #333;
+  border-radius: 5px;
+  animation: SliderEffect 15s ease-in-out infinite;
+  transition: 0.5s;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.user:hover{
+  background-color: #fff;
+}
+
+.user:hover .user_details {
+  background-color: #333;
+}
+
+@keyframes SliderEffect {
+  0% {
+    transform: translateX(-50%) scale(1); /* Start from the middle */
+  }
+  50% {
+    transform: translateX(0); /* Move to the left (fully visible) */
+  }
+  100% {
+    transform: translateX(-50%) scale(1); /* Return smoothly to the middle */
+  }
+}
+
+
+.user_details {
+  background-color: #ffff;
+  height: 50px;
+  width: 85%;
+  position: absolute;
+  bottom: 15px;
+  transition: 0.5s;
+}
+/*Section*/
+section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-auto-flow: dense;
+  align-items: center;
+  padding-left: 6%;
+}
+
+section .about_selection_cards {
+  background-color: rgba(255, 255, 255, 0.26);
+  color: #fff;
+  width: 340px;
+  overflow-x: hidden;
+  padding: 0.8rem 1.5rem;
+  border-radius: 15px;
+  transition: 0.5s;
+  overflow-y: hidden;
+}
+
+.about_selection_cards:nth-child(3) {
+  order: 2;
+}
+
+.about_selection_cards:nth-child(2) {
+  height: 250px;
+  order: 1;
+}
+
+.about_selection_cards:nth-child(1) {
+  order: 3;
+  height: 250px;
+}
+
 section .about_selection_cards:hover {
-    transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.911);
-    color: #fff;
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.911);
+  color: #fff;
 }
 
 section .about_selection_cards:hover i {
-    background-color: #fff;
-    color: rgba(0, 0, 0, 0.911);
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.911);
 }
 
 .about_section_header {
@@ -82,7 +203,38 @@ section .about_selection_cards:hover i {
   border-radius: 50%;
 }
 
+.about_section_body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80%;
+}
+
 .about_section_body li {
   margin: 0.5rem 0;
 }
 
+.about_selection_cards:nth-child(1) li {
+  list-style-type: none;
+}
+
+.about_selection_cards:nth-child(2) li {
+  list-style-type: none;
+}
+
+/*Phone View for About Selection View*/
+@media (max-width: 769px) {
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1rem;
+    padding: 0 0.9rem;
+    margin-bottom: 30vh;
+  }
+
+  section .about_selection_cards {
+    width: 400px;
+  }
+}

@@ -3,6 +3,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .container::-webkit-scrollbar {
@@ -26,12 +27,29 @@
   color: #fff;
   min-width: 100vw;
   min-height: 100vh;
-  padding: 1.5rem 5.4rem;
   position: absolute;
   top: 0;
   left: 0;
+  overflow-x: hidden;
 }
 
+.container_content::-webkit-scrollbar {
+  width: 0;
+}
+
+/*phone view for container*/
+@media (max-width: 768px) {
+  .container {
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  .container_content {
+    width: 100%;
+  }
+}
+
+/*Nav bar*/
 .logo_design {
   display: flex;
   align-items: center;
@@ -50,16 +68,37 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+.logo_design div i {
+  color: #fff;
+}
+
 .navbar_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.5rem 5.4rem;
 }
 
 .navbar_container nav .nav_link {
   text-decoration: none;
   margin: 0 1.9rem;
   color: #fff;
+  position: relative;
+}
+
+.navbar_container nav .nav_link span::after {
+  content: "";
+  height: 2px;
+  width: 0;
+  position: absolute;
+  bottom: -5px;
+  background-color: #fff;
+  left: 0;
+  transition: 0.5s;
+}
+
+.navbar_container nav .nav_link:hover span::after {
+  width: 100%;
 }
 
 .button_container button {
@@ -70,20 +109,93 @@
   outline: none;
   border-radius: 50px;
   font-size: 0.9rem;
+  transition: 0.5s;
 }
 
 .button_container button:nth-child(1) {
   background-color: transparent;
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   color: #fff;
+}
+
+.button_container button:nth-child(1):hover {
+  background-color: #fff;
+  color: #333;
+  border: none;
 }
 
 .button_container button:nth-child(2) {
   color: #333;
 }
+
+.button_container button:nth-child(2):hover {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.sidenav_icon {
+  display: none;
+}
+
+/*Phone view for Navbar*/
+@media (max-width: 768px) {
+  .navbar_container {
+    padding: 2.3rem 1.2rem;
+    width: 100%;
+  }
+
+  .logo_design div {
+    width: 40px;
+    height: 40px;
+  }
+
+  .navbar_container .logo_design h1 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .navbar_container nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    transition: 0.5s;
+    overflow-x: hidden;
+    gap: 1.5rem;
+  }
+
+  .nav_link {
+    font-size: 1.3rem;
+  }
+
+  .button_container {
+    display: none;
+  }
+
+  .sidenav_icon {
+    font-size: 1.4rem;
+    font-weight: bolder;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    border-radius: 50px;
+  }
+}
 /*Body*/
 .body_container {
   margin: 4.8rem 0;
+  padding: 1.5rem 5.4rem;
 }
 
 .body_content {
@@ -142,6 +254,38 @@
   }
 }
 
+/*body_container phone view*/
+@media (max-width: 768px) {
+  .body_container {
+    margin: 1rem 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  .body_content {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1.3rem 1.2rem;
+  }
+
+  .body_text div p {
+    width: 100%;
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  .check_button {
+    width: 100%;
+  }
+
+  .body_content .car_image {
+    top: 0px;
+    opacity: 0.9;
+  }
+}
 /*Map_container*/
 .map_container {
   min-height: 50vh;
@@ -216,6 +360,7 @@
   height: auto;
   transition: 0.3s ease-in-out;
   border-radius: 50%;
+  border: 2px solid gray;
 }
 
 .map_image_container img:nth-child(1) {
@@ -241,6 +386,29 @@
   width: 200px;
 }
 
+/* phone view for map */
+@media (max-width: 768px) {
+  .map_container {
+    min-height: 100%;
+    position: relative;
+  }
+
+  .map_content {
+    padding: 1.3rem 1.2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
+
+  .map_content .intro {
+    order: 1;
+  }
+
+  .map_image_container {
+    display: none;
+  }
+}
 /*Footer*/
 footer {
   padding: 2.5rem 5.4rem;
@@ -285,14 +453,18 @@ footer {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  flex-direction: column;
-  gap: 0.9rem;
+  gap: 15px;
 }
 
 .footer nav .footer_links {
   text-decoration: none;
   color: #fff;
-  margin: 0 1.3rem;
+  position: relative;
+}
+
+.footer_links:not(:last-child)::after {
+  content: '|';
+  margin-left: 15px;
 }
 
 .copy {
@@ -304,4 +476,42 @@ footer {
   left: 0;
   margin: 2.3rem 0;
   padding: 1.3rem 0;
+}
+
+/*phone view for footer*/
+@media (max-width: 768px) {
+  .footer {
+    margin-top: -169px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 3.3rem 1.2rem;
+    gap: 1.4rem;
+    width: 100%;
+  }
+
+
+  .footer_inp {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .footer_inp input[type=email] {
+    width: 100%;
+  }
+
+  .footer nav {
+    width: 100%;
+    margin: 1.4rem 0;
+    flex-direction: column;
+  }
+
+  .footer nav .footer_links {
+    margin-right: 0.2rem;
+    font-weight: lighter;
+  }
+
+  .footer_links:not(:last-child)::after {
+    content: '';
+  }
 }

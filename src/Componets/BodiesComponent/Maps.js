@@ -1,7 +1,7 @@
-import "../Styles/Home.css";
-import mapicon from "../assets/mapIcon.jpg";
-import mapicon2 from "../assets/mapicon4.jpg";
-import mapicon3 from "../assets/mapicon3.jpg";
+import "../../Styles/Home.css";
+import mapicon from "../../assets/mapIcon.jpg";
+import mapicon2 from "../../assets/mapicon4.jpg";
+import mapicon3 from "../../assets/mapicon3.jpg";
 import { motion } from "framer-motion";
 const Maps = () => {
   return (

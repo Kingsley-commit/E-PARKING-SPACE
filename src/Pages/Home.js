@@ -1,6 +1,6 @@
-import Navbar from "../Componets/Navbar";
-import Body from "../Componets/Body";
-import Footer from "../Componets/Footer";
+import Navbar from "../Componets/BodiesComponent/Navbar";
+import Body from "../Componets/BodiesComponent/Body";
+import Footer from "../Componets/BodiesComponent/Footer";
 import WhiteBg1 from "../assets/WhiteBg1.jpg";
 import "../Styles/Home.css";
 
