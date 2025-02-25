@@ -224,7 +224,7 @@ section .about_selection_cards:hover i {
 }
 
 /*Phone View for About Selection View*/
-@media (max-width: 769px) {
+@media (max-width: 768px) {
   section {
     display: flex;
     flex-wrap: wrap;
@@ -235,6 +235,7 @@ section .about_selection_cards:hover i {
   }
 
   section .about_selection_cards {
-    width: 400px;
+    width: 100%;
+    text-align: left;
   }
 }

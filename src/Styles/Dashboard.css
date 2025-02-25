@@ -12,9 +12,10 @@
   top: 0;
   background-color: #333;
   height: 100%;
-  width: 25%;
+  width: 20%;
   padding: 2.1rem 1rem;
 }
+
 
 .sidenav_header {
     color: #fff;
@@ -69,23 +70,22 @@ li {
         padding: 0;
     }
 
-    .logo_design h1 {
-        display: none;
+    .logo_design div {
+        margin: 0 auto;
     }
 
-    .logo_design div {
-        margin: 2.3rem 0.5rem;
+    .dashboard_logo h1 {
+        display: none;
     }
 
     .sidenav nav {
         padding: 0;
-        margin-top: 1.3rem;
+        margin-top: 3.3rem;
     }
 
     .sidenav nav ul {
         gap: 4.5rem;
-        margin:auto 0;
-        margin: 0rem 1rem;
+        align-items: center;
     }
 
     .sidenav nav ul li p {
@@ -100,7 +100,6 @@ li {
   background-color: whitesmoke;
   height: 100%;
   width: 80%;
-  border-radius: 20px 0 0 20px;
 }
 
 .dashboard_header {
@@ -148,7 +147,7 @@ li {
 
 @media (max-width: 768px) {
     .dashboard_container {
-        width: 88%;
+        width: 85%;
     }
 
     .dashboard_header {

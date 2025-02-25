@@ -18,7 +18,7 @@ const Sidenav = () => {
     <div className="sidenav">
       <div className="sidenav_content">
         <div className="sidenav_header">
-          <div className="logo_design">
+          <div className="logo_design dashboard_logo">
             <div>
               <i className="fa-solid fa-car"></i>
             </div>

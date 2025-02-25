@@ -79,9 +79,14 @@
   padding: 1.5rem 5.4rem;
 }
 
+.navbar_container nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
 .navbar_container nav .nav_link {
   text-decoration: none;
-  margin: 0 1.9rem;
   color: #fff;
   position: relative;
 }
@@ -171,6 +176,10 @@
     gap: 1.5rem;
   }
 
+  .nav_bar_full {
+    width: 100%;
+  }
+
   .nav_link {
     font-size: 1.3rem;
   }
@@ -190,6 +199,38 @@
     flex-direction: column;
     color: #fff;
     border-radius: 50px;
+  }
+}
+
+/*Tablet view for Navbar*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar_container {
+    padding: 1rem 3.5rem;
+    width: 100%;
+  }
+
+  .navbar_container .logo_design h1 {
+    width: 100%;
+  }
+
+  .navbar_container .nav_bar {
+    width: 100%;
+    gap: 0.8rem;
+  }
+
+  .navbar_container .button_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .navbar_container .button_container button {
+    margin: 0;
+  }
+
+  .sidenav_icon {
+    display: none;
   }
 }
 /*Body*/
@@ -286,6 +327,12 @@
     opacity: 0.9;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .body_container {
+    padding: 1rem 3.5rem;
+  }
+}
 /*Map_container*/
 .map_container {
   min-height: 50vh;
@@ -322,7 +369,7 @@
 }
 
 .map_content .intro {
-  width: 35 0px;
+  width: 350px;
   line-height: 1.9rem;
 }
 
@@ -406,7 +453,40 @@
   }
 
   .map_image_container {
+    position: absolute;
+    transform: scale(0.8);
+    right: -160px;
+    top: 56%;
+  }
+
+  .map_image_container img:nth-child(1) {
+    height: auto;
+    width: 40%;
+  }
+
+  .map_image_container img:nth-child(2) {
     display: none;
+  }
+
+  .map_image_container img:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .map_container {
+    margin-top: -30vh;
+  }
+  .map_content {
+    padding: 1rem 1.3rem;
+  }
+
+  .map_image_container {
+    transform: scale(0.8);
+  }
+
+  .map_content p {
+    width: 100%;
   }
 }
 /*Footer*/
@@ -513,5 +593,15 @@ footer {
 
   .footer_links:not(:last-child)::after {
     content: '';
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .footer {
+    margin-top: -43px;
+    padding: 1rem 1.3rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.3rem;
   }
 }

@@ -11,6 +11,7 @@
   padding: 1.5rem;
 }
 
+
 .signup_content {
   width: 90%;
   height: 590px;
@@ -20,6 +21,7 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
+
 
 .signup_form {
   padding: 1rem 2rem;
@@ -72,6 +74,7 @@
   background-color: whitesmoke;
   color: #333;
 }
+
 
 .sign_btn button:nth-child(2):hover {
   background-color: rgb(19, 17, 17);
@@ -205,7 +208,6 @@
   align-items: flex-start;
   gap: 0.5rem;
   flex-direction: column;
-  margin: 0.3rem 0;
 }
 
 .signin_form .inp_cnp:nth-child(1),
@@ -217,14 +219,32 @@
   width: 48%;
 }
 
+.signin_form .sign_inp {
+  width: 100%;
+}
+
 .signin_form .inp_cnp:nth-child(7) {
   width: 100%;
 }
 
-.signin_form .inp_cnp select {
-  border: 1px solid #ccc;
-  padding: 0 1rem;
+.sign_inp {
+  position: relative;
+}
+
+.sign_inp i {
+  position: absolute;
+  top: 25%;
+  left: 0.5rem;
   color: gray;
+}
+
+.signin_form .inp_cnp .sign_inp select {
+  border: 1px solid #ccc;
+  padding: 0 1.5rem;
+  color: gray;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .signin_form h3{
@@ -244,7 +264,7 @@
   border: 1px solid #ccc;
   color: gray;
   font-weight: bold;
-  padding: 0 1rem;
+  padding: 0 1.9rem;
   border-radius: 5px;
 }
 
@@ -260,7 +280,7 @@
   border: none;
   outline: none;
   color: #fff;
-  margin: 0.8rem 0;
+  margin: 0rem 0;
   border-radius: 5px;
   transition: 0.5s;
 }
@@ -268,6 +288,11 @@
 .signin_form input[type="submit"]:hover {
   background-color: #fff;
   color: rgb(14, 13, 13);
+}
+
+.errors_msg {
+  font-size: 0.8rem;
+  color: red;
 }
 
 .sign_footer {
@@ -352,7 +377,7 @@
 .login_content {
   width: 350px;
   background-color: #fff;
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 1.2rem 1rem;
   display: flex;
   justify-content: center;
@@ -360,6 +385,29 @@
   flex-direction: column;
   overflow: hidden;
   color: #333;
+  position: relative;
+}
+
+.login_content::after {
+  content: '';
+  position: absolute;
+  height: 65px;
+  width: 65px;
+  top: -20px;
+  left: -20px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.login_content::before {
+  content: '';
+  position: absolute;
+  height: 65px;
+  width: 65px;
+  bottom: -20px;
+  right: -20px;
+  background-color: #333;
+  border-radius: 50%;
 }
 
 .login_content .logo_design {
@@ -392,7 +440,7 @@
   gap: 0.5rem;
 }
 
-.login_cnp input, select {
+.login_cnp input {
   width: 100%;
   height: 38px;
   padding: 0 2rem;
@@ -400,19 +448,17 @@
   border-radius: 5px;
   outline: none;
   transition: 0.8s;
+  color: gray;
+  font-weight: bold;
 }
 
-.login_cnp select {
-  color: gray;
-}
 
 .login_cnp input:focus {
   border-color: #2d2f31;
 }
 
-
-.login_cnp select:focus {
-  border-color: #2d2f31;
+.login_cnp input::placeholder {
+  font-weight: lighter;
 }
 
 .login_cnp label {
@@ -488,3 +534,4 @@
 .info3 span {
   color: darkblue;
 }
+
