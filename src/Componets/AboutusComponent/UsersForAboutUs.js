@@ -3,19 +3,24 @@ import pic1 from "../../assets/ProfilePic1.png";
 import pic2 from "../../assets/ProfilePic2.png";
 import pic3 from "../../assets/ProfilePic3.png";
 import pic4 from "../../assets/ProfilePic4.png";
+import pic5 from "../../assets/Pic5.png";
+import pic6 from "../../assets/pic6.png";
+import pic7 from "../../assets/pic7.png";
+
 const UserForAboutUS = () => {
   const users = [
-    { name: "", title: "", image: {pic1} },
-    { name: "", title: "", image: {pic2} },
-    { name: "", title: "", image: {pic3} },
-    { name: "", title: "", image: {pic4} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
+    { name: "User 1", image: pic1 },
+    { name: "User 2", image: pic2 },
+    { name: "User 3", image: pic3 },
+    { name: "User 4", image: pic4 },
+    { name: "User 5", image: pic5 },
+    { name: "User 6", image: pic6 },
+    { name: "User 7", image: pic7 },
+    { name: "User 8", image: "" },
+    { name: "User 9", image: "" },
+    { name: "User 10", image: "" },
   ];
+
   return (
     <div>
       <motion.div
@@ -27,14 +32,21 @@ const UserForAboutUS = () => {
       >
         <div className="user_content">
           <div className="users_box">
-            {users.map((user) => (
-              <div className="user">
+            {users.map((user, index) => (
+              <div key={index} className="user">
                 <div className="image_wrapper">
-                <img src={user.image} alt="profile" className="image_content"/>
+                  {user.image ? (
+                    <img
+                      src={user.image}
+                      alt="profile"
+                      className="image_content"
+                    />
+                  ) : (
+                    <div className="image_placeholder">No Image</div>
+                  )}
                 </div>
                 <div className="user_details">
                   <h3>{user.name}</h3>
-                  <p>{user.title}</p>
                 </div>
               </div>
             ))}
