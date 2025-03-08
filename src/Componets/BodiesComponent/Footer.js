@@ -44,8 +44,7 @@ const Footer = () => {
         &copy;
         {date.toLocaleDateString("en-US", {
           year: "numeric",
-        })}
-        Smart Parking System. All Rights Reserved.
+        })} Smart Parking System. All Rights Reserved.
       </div>
     </motion.footer>
   );

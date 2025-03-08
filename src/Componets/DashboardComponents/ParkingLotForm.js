@@ -1,9 +1,89 @@
 import "../../Styles/Dashboard.css";
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
+import NothingFound from "./NothingFound";
+const AddLots = lazy(() => import("./ParkingElements"));
+
 const ParkingLotForm = () => {
   const [showLots, setShowLot] = useState(true);
   const [showForm, setShowForm] = useState(false);
+  const [showLotElement, setShowLotElement] = useState(false);
+  const [removeNothingFound, setNothingFound] = useState(true);
+  const [error, setError] = useState([]);
+
+  const [parkingLot, setParkingLotData] = useState({
+    name: "",
+    location: "",
+    totalSlots: 0,
+    availableSlots: 0,
+    vehicleType: "",
+    isAvailable: true,
+    amount: 0,
+  });
+
+  const validate = () => {
+    let newErrors = {};
+
+    if(parkingLot.name === "") {
+      newErrors.name = "Name must be filled";
+    } else if (parkingLot.location === "") {
+      newErrors.location = "Location must be filled";
+    } else if (parkingLot.totalSlots === "") {
+      newErrors.totalSlots = "Total Space must be filled.";
+    } else if (parkingLot.availableSlots === "") {
+      newErrors.availableSlots = "Available spaces must be filled.";
+    } else if (parkingLot.vehicleType === "") {
+      newErrors.vehicleType = "Vehicle type must be filled";
+    } else if (parkingLot.amount === "") {
+      newErrors.amount = "Amount must be filled";
+    }
+
+    setError(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleParkingForm = async (e) => {
+    e.preventDefault();
+    if (validate()) {
+      try {
+        const response = await fetch(
+          "https://localhost:7040/api/ParkingSpace/AddParkingSpace",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization : `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(parkingLot),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to save parking lot data");
+        }
+
+        alert("Parking lot added successfully");
+        localStorage.setItem("ParkingLot", JSON.stringify(parkingLot));
+        // Reset form
+        setParkingLotData({
+          name: "",
+          location: "",
+          totalSlots: 0,
+          availableSlots: 0,
+          vehicleType: "",
+          isAvailable: true,
+          amount: 0,
+        });
+
+        setError([]);
+        setShowLotElement(true);
+        setNothingFound(false);
+        setShowForm(false);
+      } catch (error) {
+        console.error("Error saving parking lot:", error);
+      }
+    }
+  };
 
   const handleCreateNewOwner = () => {
     setShowLot(true);
@@ -19,9 +99,15 @@ const ParkingLotForm = () => {
     <div className="mainlink_container">
       {showLots && (
         <div className="add_container">
+          {showLotElement && (
+            <Suspense>
+              <div>
+                <AddLots />
+              </div>
+            </Suspense>
+          )}
+          
           <div className="add_content">
-            <h3>Parking Lot</h3>
-            <p>Become a parkng lot owner by clicking this button.</p>
             <button onClick={handleCreateNewOwner}>
               <i className="fas fa-plus"></i>
             </button>
@@ -49,73 +135,111 @@ const ParkingLotForm = () => {
           >
             <div className="parking_form">
               <h1>Parking Lot Information</h1>
-              <p>Please enter all the neccessary forms correctly.</p>
+              <p>Please enter all the necessary forms correctly.</p>
               <form>
                 <div className="park_inp">
-                  <label>Parking Lot Name</label>
+                  <label>Name</label>
                   <input
                     type="text"
-                    placeholder="Enter the name of parking lots"
+                    placeholder="Enter your name"
+                    value={parkingLot.name}
+                    onChange={(e) => {
+                      setParkingLotData({
+                        ...parkingLot,
+                        name: e.target.value,
+                      });
+                    }}
+                    required
                   />
+                  <div className="err">{error.name}</div>
                 </div>
                 <div className="park_inp">
                   <label>Location</label>
-                  <input type="text" placeholder="Enter your location" />
+                  <div className="location_input">
+                    <input
+                      type="text"
+                      placeholder="Enter your location"
+                      value={parkingLot.location}
+                      onChange={(e) => {
+                        setParkingLotData({
+                          ...parkingLot,
+                          location: e.target.value,
+                        });
+                      }}
+                      required
+                    />
+                  </div>
+                  <div className="err">{error.location}</div>
                 </div>
                 <div className="park_inp">
                   <label>Total Spaces</label>
-                  <input type="number" placeholder="Enter your total spaces" />
-                </div>
-                <div className="park_inp">
-                  <label>Availabe Space</label>
-                  <input type="number" placeholder="Enter available Space" />
-                </div>
-                <div className="park_inp">
-                  <label>Parking Type</label>
-                  <select>
-                    <option>Select Parking Type</option>
-                    <option>Public</option>
-                    <option>Private</option>
-                    <option>Reserved</option>
-                  </select>
-                </div>
-
-                <div className="park_inp">
-                  <label>Price</label>
                   <input
                     type="number"
-                    placeholder="Enter your price per hour"
+                    placeholder="Enter your total spaces"
+                    value={parkingLot.totalSlots}
+                    onChange={(e) => {
+                      setParkingLotData({
+                        ...parkingLot,
+                        totalSlots: e.target.value,
+                      });
+                    }}
+                    required
                   />
+                  <div className="err">{error.totalSlots}</div>
                 </div>
-
                 <div className="park_inp">
-                  <label>Handicap</label>
-                  <select>
-                    <option>Do you have a space for handicap</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
+                  <label>Available Spaces</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your available spaces"
+                    value={parkingLot.availableSlots}
+                    onChange={(e) => {
+                      setParkingLotData({
+                        ...parkingLot,
+                        availableSlots: e.target.value,
+                      });
+                    }}
+                    required
+                  />
+                  <div className="err">{error.availableSlots}</div>
                 </div>
-
                 <div className="park_inp">
-                  <label>EV charging</label>
-                  <select>
-                    <option>Do you have EV charging</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
+                  <label>Vehicle Type</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your vehicle type"
+                    value={parkingLot.vehicleType}
+                    onChange={(e) => {
+                      setParkingLotData({
+                        ...parkingLot,
+                        vehicleType: e.target.value,
+                      });
+                    }}
+                    required
+                  />
+                  <div className="err">{error.vehicleType}</div>
                 </div>
-
                 <div className="park_inp">
-                  <label>Security</label>
-                  <select>
-                    <option>Do you have Security</option>
-                    <option>Yes</option>
-                    <option>No</option>
-                  </select>
+                  <label>Amount</label>
+                  <input
+                    type="number"
+                    placeholder="Enter your amount"
+                    value={parkingLot.amount}
+                    onChange={(e) => {
+                      setParkingLotData({
+                        ...parkingLot,
+                        amount: e.target.value,
+                      });
+                    }}
+                    required
+                  />
+                  <div className="err">{error.amount}</div>
                 </div>
-
-                <input type="submit" value="Submit"></input>
+                <input
+                  type="submit"
+                  value="Submit"
+                  onClick={handleParkingForm}
+                ></input>
               </form>
             </div>
           </motion.div>

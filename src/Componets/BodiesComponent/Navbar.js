@@ -54,12 +54,17 @@ const Navbar = () => {
         <Link to="/Dashboard" className="nav_link">
           <span>Dashboard</span>
         </Link>
+
+        <div className="button_container phone_button_container">
+        <button onClick={loginPage}>Log In</button>
+        <button onClick={signinpage}>Sign In</button>
+      </div>
       </nav>
 
       <div className="sidenav_icon" onClick={handleOpenNav}>
         &#9776;
       </div>
-      <div className="button_container">
+      <div className="button_container laptop_button_container">
         <button onClick={loginPage}>Log In</button>
         <button onClick={signinpage}>Sign In</button>
       </div>

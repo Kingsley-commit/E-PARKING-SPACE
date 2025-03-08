@@ -106,6 +106,24 @@
   width: 100%;
 }
 
+.phone_button_container {
+  display: none;
+}
+
+
+@media (max-width: 768px) {
+  .phone_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .laptop_button_container {
+    display: none;
+  }
+}
+
 .button_container button {
   margin: 0 1.3rem;
   height: 40px;
@@ -146,7 +164,7 @@
 /*Phone view for Navbar*/
 @media (max-width: 768px) {
   .navbar_container {
-    padding: 2.3rem 1.2rem;
+    padding: 1.9rem 1.2rem;
     width: 100%;
   }
 
@@ -182,10 +200,6 @@
 
   .nav_link {
     font-size: 1.3rem;
-  }
-
-  .button_container {
-    display: none;
   }
 
   .sidenav_icon {
@@ -239,7 +253,7 @@
   padding: 1.5rem 5.4rem;
 }
 
-.body_content {
+.body_text {
   width: 650px;
   min-height: 100vh;
 }
@@ -312,9 +326,22 @@
     padding: 1.3rem 1.2rem;
   }
 
+  .body_text {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .body_text div:nth-child(1) {
+    font-size: 2.4rem;
+    width: 100%;
+  }
+
   .body_text div p {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 2rem;
   }
 
@@ -323,7 +350,7 @@
   }
 
   .body_content .car_image {
-    top: 0px;
+    top: 2.5rem;
     opacity: 0.9;
   }
 }
@@ -594,6 +621,13 @@ footer {
   .footer_links:not(:last-child)::after {
     content: '';
   }
+
+  .copy {
+    bottom: 0px;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: -40px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -603,5 +637,12 @@ footer {
     flex-direction: column;
     align-items: flex-start;
     gap: 2.3rem;
+  }
+}
+
+/*Sign up responsiveness*/
+@media (max-width:768px) {
+  .signup_container {
+    background-color: blue;
   }
 }

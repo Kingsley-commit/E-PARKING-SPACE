@@ -1,15 +1,19 @@
-import "../../Styles/Signup.css";
-import { Link } from "react-router-dom";
+import "../../Styles/Home.css";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import "../../Styles/Signup.css";
 const SigninComponentForDriver = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+    userName: "",
     email: "",
     phoneNumber: "",
     password: "",
     confirmPassword: "",
+    roles: []
   });
 
   const [errors, setErrors] = useState({});
@@ -21,27 +25,59 @@ const SigninComponentForDriver = () => {
       newErrors.firstName = "First Name must be filled";
     } else if (formData.lastName === "") {
       newErrors.lastName = "Last Name must be filled";
+    } else if (formData.userName === "") {
+      newErrors.userName = "Username must be filled";
     } else if (formData.email === "") {
       newErrors.email = "Email must be filled";
     } else if (!formData.email.includes("@")) {
       newErrors.email = "Email must contain charcter set";
     } else if (formData.phoneNumber === "") {
       newErrors.phoneNumber = "Phone Number Must be Filled";
-    } else if (formData.password.length < 6) {
-      newErrors.password = "Password must be less than 6";
-    } else if (formData.confirmPassword === '') {
-      newErrors.confirmPassword = 'Confirm the password'
-    } else if (formData.confirmPassword !== formData.password) {
-      newErrors.password = "Your Password must be the same";
+    } else if (formData.password.length < 10) {
+      newErrors.password = "Password must be 10";
+    } else if (!/[A-Z]/.test(formData.password)) {
+      newErrors.password = "Must have at least one capital letters";
+    } else if (formData.confirmPassword === "") {
+      newErrors.confirmPassword = "Confirm the password";
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = "Your Password must be the same";
+    } else if (!formData.roles[0]) {
+      newErrors.roles = "Please select a role";
     }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-  const handleSignin = (e) => {
+
+
+  const handleSignin = async (e) => {
     e.preventDefault();
     if (validate()) {
-      console.log("Form is Successfull");
+      try {
+        const response = await fetch(
+          "https://localhost:7040/api/Account/Registration",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok) {
+          console.log("User registered successfully:", data);
+          navigate('/LoginComponent');
+        } else {
+          console.error("Registration failed:", data);
+          setErrors({ apiError: data.message || "Registration failed" });
+        }
+      } catch (err) {
+        console.error("Error during registration:", err);
+        setErrors({ apiError: "Something went wrong. Try again later." });
+      }
     }
   };
   return (
@@ -93,7 +129,23 @@ const SigninComponentForDriver = () => {
             </div>
 
             <div className="inp_cnp">
-              <label>Email</label>
+              <label>Username</label>
+              <div className="sign_inp">
+                <i className="fas fa-user"></i>
+                <input
+                  type="text"
+                  name="text"
+                  placeholder="Enter your Username"
+                  onChange={(e) =>
+                    setFormData({ ...formData, userName: e.target.value })
+                  }
+                />
+              </div>
+              <div className="errors_msg">{errors.userName}</div>
+            </div>
+
+            <div className="inp_cnp">
+              <label>Email Address</label>
               <div className="sign_inp">
                 <i className="fas fa-envelope"></i>
                 <input
@@ -163,11 +215,15 @@ const SigninComponentForDriver = () => {
               <label>Select Your Role</label>
               <div className="sign_inp">
                 <i className="fas fa-tag"></i>
-                <select>
+                <select
+                  onChange={(e) =>
+                    setFormData({ ...formData, roles: [e.target.value] })
+                  }
+                >
                   <option>Select your role</option>
-                  <option name="admin">Admin</option>
-                  <option name="driver">Driver</option>
-                  <option name="owner">Owner</option>
+                  <option name="Admin" style={{background: '#f2f2f2', color: 'white'}} disabled>Admin</option>
+                  <option name="Driver">Driver</option>
+                  <option name="Owner">Owner</option>
                 </select>
               </div>
             </div>

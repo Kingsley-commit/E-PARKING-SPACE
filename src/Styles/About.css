@@ -109,6 +109,22 @@
   flex-direction: column;
 }
 
+.image_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.image_content {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+
 .user:hover{
   background-color: #fff;
 }

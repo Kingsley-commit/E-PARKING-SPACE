@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
+import pic1 from "../../assets/ProfilePic1.png";
+import pic2 from "../../assets/ProfilePic2.png";
+import pic3 from "../../assets/ProfilePic3.png";
+import pic4 from "../../assets/ProfilePic4.png";
 const UserForAboutUS = () => {
   const users = [
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
-    { name: "", title: "", image: {} },
+    { name: "", title: "", image: {pic1} },
+    { name: "", title: "", image: {pic2} },
+    { name: "", title: "", image: {pic3} },
+    { name: "", title: "", image: {pic4} },
     { name: "", title: "", image: {} },
     { name: "", title: "", image: {} },
     { name: "", title: "", image: {} },
@@ -25,7 +29,9 @@ const UserForAboutUS = () => {
           <div className="users_box">
             {users.map((user) => (
               <div className="user">
-                {/*user.image*/}
+                <div className="image_wrapper">
+                <img src={user.image} alt="profile" className="image_content"/>
+                </div>
                 <div className="user_details">
                   <h3>{user.name}</h3>
                   <p>{user.title}</p>

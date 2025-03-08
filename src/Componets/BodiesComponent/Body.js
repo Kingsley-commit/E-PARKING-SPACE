@@ -2,7 +2,9 @@ import carv from "../../assets/carv.png";
 import Map from "./Maps";
 import "../../Styles/Home.css";
 import { motion } from "framer-motion";
+import {useNavigate} from 'react-router-dom';
 const Body = () => {
+  const navigate = useNavigate();
   return (
     <div className="body_container">
       <div className="body_content">
@@ -24,7 +26,7 @@ const Body = () => {
               book, and manage parking spaces seamlessly.
             </p>
           </div>
-          <button className="check_button">
+          <button className="check_button" onClick={()=>navigate('/LoginComponent')}>
             Check Availability<i className="fa solid fa-right-arrow"></i>
           </button>
         </motion.div>

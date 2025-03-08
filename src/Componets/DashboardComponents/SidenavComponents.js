@@ -1,19 +1,102 @@
-import "Styles/Dashboard.css";
-import "Styles/Home.css";
-import { useState } from "react";
+import "../../Styles/Dashboard.css";
+import "../../Styles/Home.css";
 import { useNavigate } from "react-router-dom";
+
 const Sidenav = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    window.onload = () => {
-        handleClickLink('/Dashboard')
-    }
+  // Redirect to Dashboard on page load
+  const handleClickLink = (path) => {
+    setTimeout(() => {
+      navigate(path);
+    }, 200);
+  };
 
-    const handleClickLink = (path) => {
-        setTimeout(() => {
-            navigate(path)
-        },200)
-    }
+  // Get user data
+  const user = JSON.parse(localStorage.getItem("user")) || { role: [] };
+  const userRoles = Array.isArray(user.role) ? user.role : [user.role];
+  console.log("User roles:", userRoles); // Debugging output
+
+  // Sidebar links by roles
+  const roles = {
+    Admin: [
+      {
+        icon: "fa fa-users",
+        name: "Manage Users",
+        onClick: () => handleClickLink("/Dashboard/Users"),
+      },
+      {
+        icon: "fa fa-cogs",
+        name: "Settings",
+        onClick: () => handleClickLink("/Dashboard/Settings"),
+      },
+      {
+        icon: "fa fa-chart-line",
+        name: "Analytics",
+        onClick: () => handleClickLink("/Dashboard/Analytics"),
+      },
+    ],
+    Driver: [
+      {
+        icon: "fa fa-parking",
+        name: "Parking Spots",
+        onClick: () => handleClickLink("/Dashboard/Parking"),
+      },
+      {
+        icon: "fa fa-user",
+        name: "Profile",
+        onClick: () => handleClickLink("/Dashboard/UserDashboard"),
+      },
+      {
+        icon: "fa fa-wallet",
+        name: "Payments",
+        onClick: () => handleClickLink("/Dashboard/DriverPayment"),
+      },
+      {
+        icon: "fa fa-road",
+        name: "Navigation & Details",
+        onClick: () => handleClickLink("/Dashboard/Navigation"),
+      },
+      {
+        icon: "fa fa-sign-out-alt",
+        name: "Logout",
+        onClick: () => handleClickLink("/LoginComponent"),
+      },
+    ],
+    Owner: [
+      {
+        icon: "fa fa-columns",
+        name: "Dashboard",
+        onClick: () => handleClickLink("/Dashboard"),
+      },
+      {
+        icon: "fa fa-car-side",
+        name: "Allotment",
+        onClick: () => handleClickLink("/Dashboard/Allotment"),
+      },
+      {
+        icon: "fa fa-user",
+        name: "Profile",
+        onClick: () => handleClickLink("/Dashboard/UserDashboard"),
+      },
+      {
+        icon: "fa fa-wallet",
+        name: "Payments",
+        onClick: () => handleClickLink("/Dashboard/Payment"),
+      },
+      {
+        icon: "fa fa-file-alt",
+        name: "Report",
+        onClick: () => handleClickLink("/Dashboard/Report"),
+      },
+      {
+        icon: "fa fa-sign-out-alt",
+        name: "Logout",
+        onClick: () => handleClickLink("/LoginComponent"),
+      },
+    ],
+  };
+
   return (
     <div className="sidenav">
       <div className="sidenav_content">
@@ -28,36 +111,16 @@ const Sidenav = () => {
 
         <nav>
           <ul>
-            <li onClick={() => handleClickLink('/Dashboard')} className="dashboard_list">
-              <span>
-                <i className="fas fa-columns"></i>
-                <p>Dashboard</p>
-              </span>
-            </li>
-            <li onClick={() => handleClickLink('/Dashboard/Allotment')} className="dashboard_list">
-              <span>
-                <i className="fas fa-car-side"></i>
-                <p>Allotment</p>
-              </span>
-            </li>
-            <li onClick={() => handleClickLink('/Dashboard/User')} className="dashboard_list">
-              <span>
-                <i className="fas fa-user"></i>
-                <p>Users</p>
-              </span>
-            </li>
-            <li onClick={() => handleClickLink('/Dashboard/Payment')} className="dashboard_list">
-              <span>
-                <i className="fas fa-wallet"></i>
-                <p>Payments</p>
-              </span>
-            </li>
-            <li onClick={() => handleClickLink('/Dashboard/Report')}className="dashboard_list">
-              <span>
-                <i className="fas fa-file-alt"></i>
-                <p>Reports</p>
-              </span>
-            </li>
+            {userRoles.map((role) =>
+              roles[role]?.map((link, index) => (
+                <li key={index} onClick={link.onClick} className="dashboard_list">
+                  <span>
+                    <i className={link.icon}></i>
+                    <p>{link.name}</p>
+                  </span>
+                </li>
+              ))
+            )}
           </ul>
         </nav>
       </div>

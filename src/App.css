@@ -1,0 +1,164 @@
+/*Search For Mappin in Location*/
+.search_container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 500px;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0.8rem;
+}
+
+.search_input {
+  width: 100%;
+  height: 40px;
+  padding: 0 1.4rem;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+}
+
+.search_btn {
+  background-color: #333;
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  color: #fff;
+  border: none;
+  outline: none;
+  margin-left: -35px;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.dropdown::-webkit-scrollbar {
+  width: 3px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.dropdown li {
+  padding: 10px;
+  list-style: none;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.dropdown li:hover {
+  background: #f0f0f0;
+}
+
+.dropdown li i {
+  margin-right: 0.9rem;
+}
+
+/*Greetings*/
+.greetings_container h1 {
+  font-size: 2.5rem;
+  padding: 1.2rem 0.8rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .signup_container {
+    padding: 0;
+    position: static;
+    min-width: 0;
+    min-height: 0;
+  }
+  .signup_content {
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    position: static;
+    overflow-y: auto;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+  }
+
+  .signup_form {
+    padding: 0;
+    min-height: 100vh;
+    min-width: 100vw;
+    position: relative;
+    background-color: #fff;
+    padding: 1.4rem 1.4rem;
+    overflow-y: auto;
+    margin-bottom: 100vh;
+  }
+
+  .signin_container {
+    padding: 0;
+  }
+
+  .signup_intro {
+    padding: 0;
+    min-height: 100%;
+    min-width: 100vw;
+    position: relative;
+  }
+
+  .signup_box {
+    position: static;
+  }
+
+  .signin_form {
+    flex-wrap: wrap;
+    margin: 1.2rem 0;
+  }
+
+  .signin_form .inp_cnp:nth-child(1),
+  .signin_form .inp_cnp:nth-child(2),
+  .signin_form .inp_cnp:nth-child(3),
+  .signin_form .inp_cnp:nth-child(4),
+  .signin_form .inp_cnp:nth-child(5),
+  .signin_form .inp_cnp:nth-child(6),
+  .signin_form .inp_cnp:nth-child(7),
+  .signin_form .inp_cnp:nth-child(8) {
+    width: 100%;
+  }
+
+  .signin_form .inp_cnp input {
+    height: 45px;
+  }
+
+  .sign_content {
+    margin-top: 45vh;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .signin_form .inp_cnp:nth-child(1),
+  .signin_form .inp_cnp:nth-child(2),
+  .signin_form .inp_cnp:nth-child(3),
+  .signin_form .inp_cnp:nth-child(4),
+  .signin_form .inp_cnp:nth-child(5),
+  .signin_form .inp_cnp:nth-child(6),
+  .signin_form .inp_cnp:nth-child(7),
+  .signin_form .inp_cnp:nth-child(8) {
+    width: 48%;
+  }
+
+}
