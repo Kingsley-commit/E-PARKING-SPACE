@@ -2,8 +2,10 @@ import "../../../Styles/Dashboard.css";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import NothingFound from "../NothingFound";
+
 const Navigation = () => {
   const [parkingSpaces, setParkingSpaces] = useState([]);
+
   useEffect((id) => {
     fetch(`https://localhost:7040/api/Booking/GetBookingById/${id}`, {
       method: "GET",
@@ -12,12 +14,10 @@ const Navigation = () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then((response) => {
-        response.json();
-      })
+      .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert('data')
+        alert('data');
         setParkingSpaces(data);
         const location = JSON.parse(data?.location);
         localStorage.setItem("location", location);
@@ -27,20 +27,12 @@ const Navigation = () => {
       });
   }, []);
 
-  //To display data cards 
+  // To display data cards
   const getDataForParkingOwner = JSON.parse(localStorage.getItem("parkingOwnerById"));
   const name = getDataForParkingOwner?.name;
   const email = getDataForParkingOwner?.email;
   const phoneNumber = getDataForParkingOwner?.phoneNumber;
-  const parkingOwnerData = [
-    {name: name},
-    {email: email},
-    {phoneNumber: phoneNumber}
-  ]
 
-  const viewParkingDetailsByLocation = () => {
-    // Implement
-  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 200 }}
@@ -55,23 +47,18 @@ const Navigation = () => {
           <p>Navigate and view user details</p>
           <div className="navigate_cards">
             <div className="navigate_cards_content">
-              <div className='cancel_item'>&times;</div>
-               {parkingOwnerData.length > 0 ? (
-                parkingOwnerData.map(space => {
-                  return(
-                    <div className='navigate_details'>
-                    <h1>{space.name}</h1>
-                    <p>{space.email}</p>
-                    <p>{space.phoneNumber}</p>
-                    <div className="navigate_buttons">
-                      <button>Book</button>
-                    </div>
+              {getDataForParkingOwner ? (
+                <div className='navigate_details'>
+                  <h1>{name}</h1>
+                  <p>{email}</p>
+                  <p>{phoneNumber}</p>
+                  <div className="navigate_buttons">
+                    <button>Book</button>
                   </div>
-                  )
-                })
-               ) : (
+                </div>
+              ) : (
                 <NothingFound />
-               )}
+              )}
             </div>
           </div>
         </div>

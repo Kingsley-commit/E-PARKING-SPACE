@@ -21,9 +21,9 @@ const Parking = () => {
   };
 
   // Function to handle booking
-  const handleBookElement = (spaceId) => {
-    fetch(`https://localhost:7040/api/Booking/GetAllBookingsById/${spaceId}`, {
-      method: "GET",
+  const handleBookElement = () => {
+    fetch(`https://localhost:7040/api/Booking/AddBooking`, {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -148,7 +148,7 @@ const Parking = () => {
                           {lot.amount}
                         </div>
                       </div>
-                      <button onClick={() => handleBookElement(lot.spaceId)}>
+                      <button onClick={handleBookElement}>
                         Book
                       </button>
                     </div>

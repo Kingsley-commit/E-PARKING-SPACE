@@ -23,7 +23,7 @@ const ParkingElement = () => {
 
   // Function to delete a parking lot
   const deleteLot = async (id) => {
-    console.log("Attempting to delete the ", id);
+    console.log("Attempting to delete the parking lot with ID:", id);
     try {
       const response = await fetch(
         `https://localhost:7040/api/ParkingSpace/DeleteParkingSpace/${id}`,
@@ -42,8 +42,8 @@ const ParkingElement = () => {
         );
         console.log("Parking lot deleted successfully");
       } else {
-        const errorData = await response.json();
-        console.error("Failed to delete parking lot:", errorData);
+        const errorText = await response.json();
+        console.error("Failed to delete parking lot:", errorText);
       }
     } catch (error) {
       console.error("Error deleting parking lot:", error);
@@ -85,7 +85,7 @@ const ParkingElement = () => {
                   <i className="fas fa-pencil"></i>
                   <i
                     className="fas fa-trash"
-                    onClick={() => deleteLot(lot.spaceId)} // Fixed
+                    onClick={() => deleteLot(lot.spaceId)}
                   ></i>
                 </span>
               </div>
