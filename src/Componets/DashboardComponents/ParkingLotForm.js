@@ -10,6 +10,7 @@ const ParkingLotForm = () => {
   const [showLotElement, setShowLotElement] = useState(false);
   const [removeNothingFound, setNothingFound] = useState(true);
   const [error, setError] = useState([]);
+  const [refreshData, setRefreshData] = useState(false);
 
   const [parkingLot, setParkingLotData] = useState({
     name: "",
@@ -24,7 +25,7 @@ const ParkingLotForm = () => {
   const validate = () => {
     let newErrors = {};
 
-    if(parkingLot.name === "") {
+    if (parkingLot.name === "") {
       newErrors.name = "Name must be filled";
     } else if (parkingLot.location === "") {
       newErrors.location = "Location must be filled";
@@ -52,7 +53,7 @@ const ParkingLotForm = () => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization : `Bearer ${localStorage.getItem("token")}`
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
             },
             body: JSON.stringify(parkingLot),
           }
@@ -79,6 +80,7 @@ const ParkingLotForm = () => {
         setShowLotElement(true);
         setNothingFound(false);
         setShowForm(false);
+        setRefreshData(true); // Trigger data refresh
       } catch (error) {
         console.error("Error saving parking lot:", error);
       }
@@ -95,6 +97,10 @@ const ParkingLotForm = () => {
     setShowLot(true);
   };
 
+  const handleDataRefresh = () => {
+    setRefreshData(false);
+  };
+
   return (
     <div className="mainlink_container">
       {showLots && (
@@ -102,11 +108,14 @@ const ParkingLotForm = () => {
           {showLotElement && (
             <Suspense>
               <div>
-                <AddLots />
+                <AddLots
+                  refreshData={refreshData}
+                  onRefresh={handleDataRefresh}
+                />
               </div>
             </Suspense>
           )}
-          
+
           <div className="add_content">
             <button onClick={handleCreateNewOwner}>
               <i className="fas fa-plus"></i>

@@ -1052,20 +1052,44 @@ select {
 }
 
 .navigate_container {
-  padding: 1.3rem 1.5rem;
+  position: relative;
+  overflow-x: hidden;
+  padding: 0.8rem 1rem;
 }
 
 .navigate_cards {
-  display: grid;
-  grid-template-columns: 48% 48%;
-  gap: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .navigate_cards .navigate_cards_content {
-  padding: 1.3rem 1.5rem;
+  padding: 0.9rem 2rem;
   background-color: #fff;
   border-radius: 10px;
+  margin: 2.3rem 0;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.navigate_details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.navigate_buttons button{
+  height: 40px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #333;
+  border-radius: 5px;
+  color: #ffff;
+  width: 300px;
 }
 
 /*Payment*/

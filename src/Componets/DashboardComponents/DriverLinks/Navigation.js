@@ -5,7 +5,7 @@ import NothingFound from "../NothingFound";
 
 const Navigation = () => {
   const [parkingSpaces, setParkingSpaces] = useState([]);
-
+  const [showBookingBox, setShowBookingBox] = useState(false);
   useEffect((id) => {
     fetch(`https://localhost:7040/api/Booking/GetBookingById/${id}`, {
       method: "GET",
@@ -17,7 +17,6 @@ const Navigation = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert('data');
         setParkingSpaces(data);
         const location = JSON.parse(data?.location);
         localStorage.setItem("location", location);
@@ -27,8 +26,35 @@ const Navigation = () => {
       });
   }, []);
 
+  const bookFunc = () => {
+    fetch(`https://localhost:7040/api/Booking/AddBooking`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({
+        driverId: 4,
+        spaceId: 4,
+        bookingDate: "2025-03-08T17:59:50.149Z",
+        startTime: "2025-03-08T17:59:50.149Z",
+        endTime: "2025-03-08T17:59:50.149Z",
+        isConfirmed: true,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   // To display data cards
-  const getDataForParkingOwner = JSON.parse(localStorage.getItem("parkingOwnerById"));
+  const getDataForParkingOwner = JSON.parse(
+    localStorage.getItem("parkingOwnerById")
+  );
   const name = getDataForParkingOwner?.name;
   const email = getDataForParkingOwner?.email;
   const phoneNumber = getDataForParkingOwner?.phoneNumber;
@@ -48,12 +74,12 @@ const Navigation = () => {
           <div className="navigate_cards">
             <div className="navigate_cards_content">
               {getDataForParkingOwner ? (
-                <div className='navigate_details'>
+                <div className="navigate_details">
                   <h1>{name}</h1>
-                  <p>{email}</p>
-                  <p>{phoneNumber}</p>
+                  <p>Email: {email}</p>
+                  <p>Phone number: {phoneNumber}</p>
                   <div className="navigate_buttons">
-                    <button>Book</button>
+                    <button onClick={bookFunc}>Book</button>
                   </div>
                 </div>
               ) : (
@@ -61,6 +87,13 @@ const Navigation = () => {
               )}
             </div>
           </div>
+          {showBookingBox && (
+            <div>
+              <div>
+                <button>Make Payment</button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

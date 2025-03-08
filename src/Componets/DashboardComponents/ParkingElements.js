@@ -4,7 +4,7 @@ import NothingFound from "./NothingFound";
 const ParkingElement = () => {
   const [parkingLot, setParkingLot] = useState([]);
 
-  useEffect(() => {
+  const fetchParkingLots = () => {
     fetch("https://localhost:7040/api/ParkingSpace/GetAllParkingSpaces", {
       method: "GET",
       headers: {
@@ -19,6 +19,10 @@ const ParkingElement = () => {
         localStorage.setItem("lot", JSON.stringify(data)); // Fixed JSON storage
       })
       .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    fetchParkingLots();
   }, []);
 
   // Function to delete a parking lot
@@ -37,10 +41,8 @@ const ParkingElement = () => {
       );
 
       if (response.ok) {
-        setParkingLot((prevLots) =>
-          prevLots.filter((lot) => lot.spaceId !== id)
-        );
         console.log("Parking lot deleted successfully");
+        fetchParkingLots(); // Refetch the data after deletion
       } else {
         const errorText = await response.json();
         console.error("Failed to delete parking lot:", errorText);
