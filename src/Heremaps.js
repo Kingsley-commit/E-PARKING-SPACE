@@ -1,45 +1,44 @@
 import React, { useEffect, useRef, useState } from "react";
-import './App.css';
+import "./App.css";
+
 const HereMap = () => {
   const mapRef = useRef(null);
   const searchInputRef = useRef(null);
   const [map, setMap] = useState(null);
   const platformRef = useRef(null);
   const [suggestions, setSuggestions] = useState([]);
-
-  // Function to load the HERE Maps scripts dynamically
-  const loadHereMapsScripts = () => {
-    return new Promise((resolve, reject) => {
-      if (window.H) {
-        resolve();
-        return;
-      }
-
-      const scriptUrls = [
-        "https://js.api.here.com/v3/3.1/mapsjs-core.js",
-        "https://js.api.here.com/v3/3.1/mapsjs-service.js",
-        "https://js.api.here.com/v3/3.1/mapsjs-ui.js",
-        "https://js.api.here.com/v3/3.1/mapsjs-mapevents.js",
-      ];
-
-      let loadedScripts = 0;
-      scriptUrls.forEach((url) => {
-        const script = document.createElement("script");
-        script.src = url;
-        script.async = true;
-        script.onload = () => {
-          loadedScripts++;
-          if (loadedScripts === scriptUrls.length) {
-            resolve();
-          }
-        };
-        script.onerror = () => reject(`Failed to load script: ${url}`);
-        document.body.appendChild(script);
-      });
-    });
-  };
+  const [searchHistory, setSearchHistory] = useState([]);
 
   useEffect(() => {
+    const loadHereMapsScripts = () => {
+      return new Promise((resolve, reject) => {
+        if (window.H) {
+          resolve();
+          return;
+        }
+
+        const scriptUrls = [
+          "https://js.api.here.com/v3/3.1/mapsjs-core.js",
+          "https://js.api.here.com/v3/3.1/mapsjs-service.js",
+          "https://js.api.here.com/v3/3.1/mapsjs-ui.js",
+          "https://js.api.here.com/v3/3.1/mapsjs-mapevents.js",
+        ];
+
+        let loadedScripts = 0;
+        scriptUrls.forEach((url) => {
+          const script = document.createElement("script");
+          script.src = url;
+          script.async = true;
+          script.onload = () => {
+            loadedScripts++;
+            if (loadedScripts === scriptUrls.length) resolve();
+          };
+          script.onerror = () => reject(`Failed to load: ${url}`);
+          document.body.appendChild(script);
+        });
+      });
+    };
+
     loadHereMapsScripts()
       .then(() => {
         if (!window.H) {
@@ -50,22 +49,16 @@ const HereMap = () => {
         const platform = new window.H.service.Platform({
           apikey: "nRh1BF6u4hfYwqFPfhu8pRGBThEbZ_lXfokdteLmiYs",
         });
-
         platformRef.current = platform;
 
         const defaultLayers = platform.createDefaultLayers();
         const mapInstance = new window.H.Map(
           mapRef.current,
           defaultLayers.vector.normal.map,
-          {
-            zoom: 15,
-            center: { lat: 6.5244, lng: 3.3792 },
-          }
+          { zoom: 15, center: { lat: 6.5244, lng: 3.3792 } }
         );
 
-        new window.H.mapevents.Behavior(
-          new window.H.mapevents.MapEvents(mapInstance)
-        );
+        new window.H.mapevents.Behavior(new window.H.mapevents.MapEvents(mapInstance));
         window.H.ui.UI.createDefault(mapInstance, defaultLayers);
         setMap(mapInstance);
 
@@ -75,23 +68,17 @@ const HereMap = () => {
               const { latitude, longitude } = position.coords;
               mapInstance.setCenter({ lat: latitude, lng: longitude });
 
-              const userMarker = new window.H.map.Marker({
-                lat: latitude,
-                lng: longitude,
-              });
+              const userMarker = new window.H.map.Marker({ lat: latitude, lng: longitude });
               mapInstance.addObject(userMarker);
             },
             (error) => console.error("Geolocation error:", error),
             { enableHighAccuracy: true }
           );
         }
-
-        return () => mapInstance.dispose();
       })
       .catch((error) => console.error(error));
   }, []);
 
-  // Handle input change and fetch location suggestions
   const handleInputChange = (event) => {
     const query = event.target.value;
     if (!query || !platformRef.current) {
@@ -101,30 +88,28 @@ const HereMap = () => {
 
     const searchService = platformRef.current.getSearchService();
     searchService.autosuggest(
-      { q: query, at: "6.5244,3.3792" }, // Lagos as a reference location
+      { q: query, at: "6.5244,3.3792" },
       (result) => {
-        if (result.items) {
-          setSuggestions(result.items);
-        }
+        if (result.items) setSuggestions(result.items);
       },
       (error) => console.error("Error fetching suggestions:", error)
     );
   };
 
-  // Handle selecting a suggested location
   const handleSelectLocation = (location) => {
     if (!map) return;
 
-    const { position } = location;
+    const { position, title } = location;
     map.setCenter({ lat: position.lat, lng: position.lng });
 
     const marker = new window.H.map.Marker({ lat: position.lat, lng: position.lng });
     map.addObject(marker);
 
-    setSuggestions([]); // Clear suggestions after selecting
+    setSuggestions([]);
+    setSearchHistory((prev) => [...new Set([title, ...prev])]);
+    localStorage.setItem("searchHistory", JSON.stringify([...new Set([title, ...searchHistory])]));
   };
 
-  // Handle searching when button is clicked
   const handleSearch = () => {
     const query = searchInputRef.current.value;
     if (!query || !platformRef.current) return;
@@ -133,9 +118,7 @@ const HereMap = () => {
     searchService.geocode(
       { q: query },
       (result) => {
-        if (result.items.length > 0) {
-          handleSelectLocation(result.items[0]); // Use first search result
-        }
+        if (result.items.length > 0) handleSelectLocation(result.items[0]);
       },
       (error) => console.error("Error fetching location:", error)
     );
@@ -160,6 +143,16 @@ const HereMap = () => {
             {suggestions.map((suggestion, index) => (
               <li key={index} onClick={() => handleSelectLocation(suggestion)}>
                 <i className="fa fa-location-dot"></i> {suggestion.title}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {searchHistory.length > 0 && (
+          <ul className="history">
+            {searchHistory.map((item, index) => (
+              <li key={index} onClick={() => handleSearch(item)}>
+                <i className="fa fa-clock"></i> {item}
               </li>
             ))}
           </ul>

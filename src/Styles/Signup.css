@@ -9,13 +9,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 1.5rem;
 }
 
 
 .signup_content {
   width: 90%;
-  height: 590px;
+  height: 560px;
   border-radius: 5px;
   overflow: hidden;
   position: relative;
@@ -45,8 +44,9 @@
 }
 
 .signup_form p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 1.8rem 0;
+  text-align: left;
 }
 
 .sign_btn {
@@ -365,7 +365,7 @@
   font-family: Yu Gothic;
   min-height: 100vh;
   min-width: 100vw;
-  background-color: rgb(236, 232, 232);
+  background-color: rgb(181, 211, 241);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -385,6 +385,7 @@
   overflow: hidden;
   color: #333;
   position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sign_component_content::after {
@@ -411,15 +412,16 @@
 
 .sign_component_content .logo_design {
   font-size: 0.6rem;
-  margin: 0.9rem 0;
 }
 
 .logo_design div {
   height: 35px;
   width: 35px;
+  background-color: #333;
+  color: #fff;
 }
 
-.sign_component_content h3 {
+.sign_component_content h3, h2 {
   font-weight: lighter;
 }
 

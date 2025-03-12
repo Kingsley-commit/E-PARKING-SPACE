@@ -9,7 +9,7 @@ import DashboardComponents from "Componets/DashboardComponents/OwnerLinks/Dashbo
 import Allotment from "Componets/DashboardComponents/OwnerLinks/Allotment";
 import Payment from "Componets/DashboardComponents/OwnerLinks/Payment";
 import Users from "Componets/DashboardComponents/OwnerLinks/UsersDashboard";
-import Reports from "Componets/DashboardComponents/OwnerLinks/Report";
+import Book from "Componets/DashboardComponents/OwnerLinks/Book";
 //Driver
 import DriverPayement from "Componets/DashboardComponents/DriverLinks/DriverPayment";
 import Navigation from "Componets/DashboardComponents/DriverLinks/Navigation";
@@ -33,7 +33,7 @@ const Dashboard = () => {
               <Route path="/Allotment" element={<Allotment />} />
               <Route path="/Payment" element={<Payment />} />
               <Route path="/UserDashboard" element={<Users />} />
-              <Route path="/Report" element={<Reports />} />
+              <Route path="/Book" element={<Book />} />
               {/*Route for Driver components */}
               <Route path="/Parking" element={<Parking />}></Route>
               <Route path="/DriverPayment" element={<DriverPayement />}></Route>

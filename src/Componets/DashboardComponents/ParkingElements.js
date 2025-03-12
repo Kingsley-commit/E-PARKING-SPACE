@@ -56,43 +56,42 @@ const ParkingElement = () => {
     <div>
       <h2 className="lot_header_text">Parking Lots</h2>
       {parkingLot.length > 0 ? (
-        <div className="lot_container">
-          {parkingLot.map((lot) => (
-            <div key={lot.spaceId} className="lot_elements">
-              <div className="lots_content">
-                <span className="park_container">
-                  <div className="park_text">Parking Lot Name</div>
-                  <div className="park_content">{lot.name}</div>
-                </span>
-                <span className="totals_container">
-                  <div className="totals_text">Total Space</div>
-                  <div className="totals_content">{lot.totalSlots}</div>
-                </span>
-                <span className="avails_container">
-                  <div className="avails_text">Available Space</div>
-                  <div className="avails_content">{lot.availableSlots}</div>
-                </span>
-                <span className="location_container">
-                  <div className="location_text">Location</div>
-                  <div className="location_content">{lot.location}</div>
-                </span>
-                <span className="price_container">
-                  <div className="price_text">Price</div>
-                  <div className="price_content">
-                    <i className="fas fa-naira-sign"></i>
-                    {lot.amount}
-                  </div>
-                </span>
-                <span className="delete_container">
-                  <i className="fas fa-pencil"></i>
-                  <i
-                    className="fas fa-trash"
-                    onClick={() => deleteLot(lot.spaceId)}
-                  ></i>
-                </span>
-              </div>
-            </div>
-          ))}
+        <div className="book_container">
+          <div className="book_content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Parking Lot Name</th>
+                  <th>Total Space</th>
+                  <th>Available Space</th>
+                  <th>Location</th>
+                  <th className="th_5">Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {parkingLot.map((lot) => (
+                  <tr key={lot.spaceId}>
+                    <td>{lot.name}</td>
+                    <td>{lot.totalSlots}</td>
+                    <td>{lot.availableSlots}</td>
+                    <td>{lot.location}</td>
+                    <td>
+                      <i className="fas fa-naira-sign"></i>
+                      {lot.amount}
+                    </td>
+                    <td className="icons_edit">
+                      <i className="fas fa-pencil"></i>
+                      <i
+                        className="fas fa-trash"
+                        onClick={() => deleteLot(lot.spaceId)}
+                      ></i>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <NothingFound />

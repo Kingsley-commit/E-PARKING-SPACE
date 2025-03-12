@@ -4,7 +4,6 @@
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 100vh;
-  font-family: Yu Gothic;
   background: url("../assets/Parking\ Lot.png") no-repeat center/cover;
 }
 
@@ -32,6 +31,44 @@
 .about_content_body {
   margin: 3.2rem 0;
 }
+
+.about_header .navbar_container .logo_design h1{
+  color: #fff;
+}
+
+.about_header .navbar_container .logo_design h1:after{
+  background-color: #fff;
+}
+
+.about_header .navbar_container .nav_link {
+  color: #fff;
+}
+
+.about_header .navbar_container .nav_link span::after {
+  background-color: #fff;
+}
+
+.about_header .navbar_container .button_container button:nth-child(1){
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.about_header .navbar_container .button_container button:nth-child(1):hover{
+  color: #333;
+  background-color: #fff;
+}
+
+.about_header .navbar_container .button_container button:nth-child(2){
+  color: #333;
+  background-color: #fff;
+}
+
+.about_header .navbar_container .button_container button:nth-child(2):hover{
+  color: #fff;
+  border: 2px solid #fff;
+  background: transparent;
+}
+
 
 .about_intro {
   display: flex;
@@ -77,17 +114,49 @@
     padding: 0 0.9rem;
   }
 }
+
+.users_design_container h1{
+  text-align: center;
+  position: relative;
+  margin: 1.6rem;
+}
+
+.users_design_container h1:after {
+  content: "";
+  position: absolute;
+  left: 45%;
+  bottom: -3px;
+  background-color: #fff;
+  height: 3px;
+  width: 5%;
+  border-radius: 5px;
+  animation: width 1s linear infinite;
+}
+
+@keyframes width {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 5%;
+  }
+}
 /*User Slider*/
 .user_content {
 }
 
 .users_box {
-  white-space: nowrap;
-  overflow-x: auto;
-  position: relative;
-  display: flex;
-  gap: 2.8rem;
+  display: grid;
+  grid-template-columns: repeat(5, 220px);
+  justify-content: center;
+  align-items: center;
   margin: 2.5rem 0;
+  gap: 1rem;
+}
+
+.users_box .user:nth-child(even) {
+  height: 200px;
 }
 
 .users_box::-webkit-scrollbar {
@@ -95,11 +164,9 @@
 }
 
 .user {
-  height: 250px;
-  min-width: 200px;
+  height: 280px;
   background-color: #333;
   border-radius: 5px;
-  animation: SliderEffect 15s ease-in-out infinite;
   transition: 0.5s;
   position: relative;
   overflow-x: hidden;
@@ -118,12 +185,19 @@
 
 .image_content {
   position: absolute;
-  transform: scale(1.3);
   left: 0;
-  bottom: -25px;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   transition: 0.5s;
+}
+
+.user:hover .image_content {
+  transform: scale(1.1); /* Zoom in the image on hover */
+}
+
+.user:nth-child(6) .image_content {
+  border-radius: 50%;
 }
 
 .user:hover{
@@ -137,14 +211,28 @@
 
 .user_details {
   background-color: #ffff;
-  height: 50px;
+  height: auto;
   width: 95%;
   position: absolute;
   bottom: 5px;
   transition: 0.5s;
   color: #333;
-  border-radius: 10px;
-  padding: 0.5rem 0.9rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 0.4rem 0.9rem;
+}
+
+.user_details h3 {
+  font-weight: bold;
+  font-size: 0.91rem;
+}
+
+.user_details p {
+  font-weight: lighter;
+  font-size: 0.8rem;
 }
 
 @keyframes SliderEffect {

@@ -54,7 +54,7 @@ const Sidenav = () => {
       },
       {
         icon: "fa fa-road",
-        name: "Navigation & Details",
+        name: "Details/Navigation",
         onClick: () => handleClickLink("/Dashboard/Navigation"),
       },
       {
@@ -85,8 +85,8 @@ const Sidenav = () => {
         onClick: () => handleClickLink("/Dashboard/Payment"),
       },
       {
-        icon: "fa fa-file-alt",
-        name: "Report",
+        icon: "fa fa-book",
+        name: "Booked Space",
         onClick: () => handleClickLink("/Dashboard/Report"),
       },
       {

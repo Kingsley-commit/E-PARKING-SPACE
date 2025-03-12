@@ -9,23 +9,37 @@ const Maps = () => {
       initial={{ opacity: 0, y: 100 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
+      viewport={{ once: false }}
       className="map_container"
     >
       <div className="blur"></div>
       <div className="map_content">
-        <div className="map_image_container">
-          <img src={mapicon} alt="map" />
-          <img src={mapicon2} alt="map" />
-          <img src={mapicon3} alt="map" />
-        </div>
         <div className="intro">
-          <h1>Nearest Parking Spot</h1>
-          <p>
+          <motion.h1
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: false }}
+          >
+            Nearest Parking Spot
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: false }}
+          >
             Our integrated interactive map allows users to locate available
             parking spots in real-time, guiding them to the best options nearby.
-          </p>
-          <button>Get Started</button>
+          </motion.p>
+          <motion.button
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: false }}
+          >
+            Get Started
+          </motion.button>
         </div>
       </div>
     </motion.div>

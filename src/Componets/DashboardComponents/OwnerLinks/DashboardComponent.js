@@ -30,8 +30,8 @@ const DashboardComponents = () => {
                   <Link to="./Allotment" className="owner_header_link">
                     View All
                   </Link>
+                  <ParkingElement  />
                 </div>
-                <ParkingElement/>
               </div>
             </div>
           </div>

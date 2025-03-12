@@ -5,10 +5,10 @@ const Footer = () => {
   const date = new Date();
   return (
     <motion.footer
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 200 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      viewport={{ once: false }}
       className="footer"
     >
       <div className="logo_design">

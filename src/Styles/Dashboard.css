@@ -24,6 +24,11 @@
 
 .sidenav_header .logo_design h1 {
   font-size: 1.2rem;
+  color: #fff;
+}
+
+.sidenav_header .logo_design h1:after {
+  background-color: #fff;
 }
 
 .sidenav_header .logo_design div {
@@ -339,30 +344,12 @@ li {
 .lot_container {
   padding: 0.8rem 2.2rem;
   width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 1.5rem;
-  overflow-x: auto;
 }
 
 .lot_header_text {
   padding: 0.8rem 2.2rem;
 }
 
-.lots_content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 75vw;
-  padding: 0.8rem 1.2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: 0.5s;
-  overflow: hidden;
-}
 
 .parking_head {
   padding: 0 2.3rem;
@@ -380,55 +367,6 @@ li {
   }
 }
 
-.park_container,
-.location_container,
-.price_container,
-.totals_container,
-.avails_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.park_text,
-.location_text,
-.price_text,
-.totals_text,
-.avails_text {
-  font-weight: bold;
-  text-align: center;
-}
-
-.price_content {
-  color: green;
-  font-weight: bolder;
-}
-
-.totals_content {
-  color: orangered;
-}
-
-.avails_content {
-  color: orange;
-  font-weight: bold;
-}
-
-.delete_container {
-  display: flex;
-  gap: 1.3rem;
-}
-
-.delete_container .fa-trash {
-  color: red;
-  cursor: pointer;
-}
-
-.delete_container .fa-pencil {
-  color: dodgerblue;
-  cursor: pointer;
-}
 
 /*Booking container*/
 .book_container {
@@ -444,11 +382,11 @@ li {
 }
 
 .book_content {
-  max-width: 1500px;
   width: 100%;
   height: 100%;
   position: relative;
   padding: 0 1rem;
+  overflow-x: hidden;
 }
 
 @media (max-width: 768px) {
@@ -461,10 +399,6 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0;
-  left: 0;
   width: 100%;
   z-index: 1;
   padding: 0.9rem 1rem;
@@ -473,51 +407,126 @@ li {
 
 .book_container h1 {
   font-size: 1.4rem;
+  font-weight: lighter;
 }
 
 .book_header button {
-  height: 40px;
   border: none;
   outline: none;
   background-color: #333;
   color: #fff;
   border-radius: 5px;
+  text-align: left;
+  gap: 0.6rem;
   display: flex;
-  justify-content: center;
-  gap: 1.2rem;
-  padding: 0 1.3rem;
+  justify-content: flex-start;
   align-items: center;
+  padding: 0 0.5rem;
+  width: 160px;
+  height: 40px;
+  font-weight: lighter;
 }
-.book_element {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 100vw;
-  padding: 0.8rem 1.2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  transition: 0.5s;
-  margin: 0.9rem 0;
-}
-.book_element_nodes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
+
 
 .book_text {
   font-weight: bold;
 }
 
-.book_element button {
+.book_content table{
+  border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  .book_content {
+    overflow-x: auto;
+  }
+  .book_content table {
+    min-width: 100vw;
+  }
+}
+
+.book_content thead tr th, td{
+  padding: 1rem 1.2rem;
+  font-weight: lighter;
+  text-align: left;
+  font-size: 0.91rem;
+}
+
+.book_content thead tr th {
+  background-color: #333;
+  color: #fff;
+  transition: 0.5s;
+}
+
+
+.book_content thead tr th:hover {
+  color: #333;
+  background-color: whitesmoke;
+}
+
+.book_content thead tr th:nth-child(1) {
+  border-top-left-radius: 15px;
+}
+
+
+.book_content thead tr th:nth-child(7) {
+  border-top-right-radius: 15px;
+}
+
+.book_content thead tr .th_5{
+  border-top-right-radius: 0;
+}
+
+.book_content thead tr .th_4 {
+  border-top-right-radius: 15px;
+}
+
+.book_content thead tr .th_6 {
+  border-top-right-radius: 15px;
+}
+
+.book_content tr {
+  border-bottom: 1px solid #ccc;
+}
+
+.book_content tbody {
+  border: 1px solid #ccc;
+}
+
+.icons_edit {
+  display: flex;
+  gap: 1.3rem;
+}
+
+.icons_edit i:nth-child(1) {
+  color: yellow;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.icons_edit i:nth-child(2) {
+  color: red;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.icons_edit i:hover {
+  transform: scale(1.3);
+}
+
+.book_content button {
   background-color: #333;
   color: #fff;
   width: 150px;
   border: none;
   outline: none;
   height: 30px;
+  transition: 0.5s;
+}
+
+.book_content button:hover {
+  background-color: whitesmoke;
+  color: #333;
 }
 
 /*Nothing Found*/
@@ -809,12 +818,11 @@ li {
   }
 }
 
-.owner_dash {
-  padding: 0.8rem 1.3rem;
-}
-
 .book_container {
   overflow-y: auto;
+  max-width: 1000px;
+  width: 100%;
+  overflow-x: auto;
 }
 
 .book_container::-webkit-scrollbar {
@@ -844,14 +852,6 @@ li {
   }
 }
 
-.driver_container tr th:nth-child(1) {
-  padding: 1rem 0;
-}
-
-tr,
-td {
-  padding: 1.5rem 1.4rem;
-}
 
 .driver_display {
   height: 100%;
@@ -859,16 +859,6 @@ td {
 }
 
 
-tr:nth-child(odd) {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-  background-color: rgb(253, 251, 251);
-}
-tr {
-  position: relative;
-}
 
 .driver_container .owners_btn {
   width: 100%;
@@ -1059,18 +1049,26 @@ select {
 
 .navigate_cards {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .navigate_cards {
+    flex-direction: column;
+  }
 }
 
 .navigate_cards .navigate_cards_content {
-  padding: 0.9rem 2rem;
+  padding: 1.9rem 2rem;
   background-color: #fff;
   border-radius: 10px;
   margin: 2.3rem 0;
+  width: auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+
 
 .navigate_details {
   display: flex;
@@ -1092,7 +1090,301 @@ select {
   width: 300px;
 }
 
+
+.details_container {
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 1.4rem 0.8rem;
+  position: relative;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+.details_content {
+  width: 100%;
+  max-width: 800px;
+  overflow-x: auto;
+}
+
+.details_content::-webkit-scrollbar {
+  height: 3px;
+  background: transparent;
+}
+
+.details_content::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 5px;
+}
+
+.bookings_header {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.3rem 0;
+  min-width: 23vw;
+}
+
+.booking_titles {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.booking_titles h3{
+  font-weight: bold;
+}
+
+.booking_titles:nth-child(3) button {
+  height: 45px;
+  width: 200px;
+  border: none;
+  outline: none;
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+}
+
+/*Booking Modal*/
+.book_modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.671);
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book_modal_content {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #333;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.book_modal_content h3, p {
+  text-align: center;
+}
+
+.book_modal_content p {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.book_modal_content h3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book_modal_content i {
+  height: 40px;
+  width: 40px;
+  background-color: #fff;
+  color: green;
+  border: 1px solid green;
+  display: flex;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50px;
+  animation: scale 0.3s linear;
+}
+
+@keyframes scale {
+  from {
+    transform: scale(0);
+    background-color: #fff;
+    color: green;
+  }
+  to {
+    transform: scale(1);
+    background-color: green;
+    color: #fff;
+  }
+}
+
+.book_modal_content button {
+  height: 40px;
+  width: 100%;
+  background-color: #333;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.booking_btn_container {
+  display: grid;
+  grid-template-columns: 49% 49%;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.booking_btn_container button:nth-child(2) {
+  background-color: transparent;
+  color: #333;
+  font-weight: bolder;
+}
+
+.booking_btn_container button:nth-child(1) {
+  font-weight: lighter;
+}
+
+@media (max-width: 768px) {
+
+  .book_modal_content {
+    width: 330px;
+  }
+}
+
+/*Get Booking Details*/
+.main_details_container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.603);
+  background-color: rgba(0, 0, 0, 0.301);
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  flex-direction: column;
+}
+
+.main_details_content {
+  background-color: #fff;
+  padding: 1rem 1.5rem;
+  width: auto;
+}
+
+@media (max-width: 769px) {
+  .main_details_content {
+    width: 320px;
+  }
+}
 /*Payment*/
+.payment button {
+ position: fixed;
+ top: 0;
+ right: 50px;
+ background: transparent;
+ z-index: 1;
+ color: #fff;
+ border: none;
+ outline: none;
+ z-index: 5;
+ font-size: 2.5rem;
+}
 .payment_container {
-  padding: 0.9rem 1.3rem;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.603);
+  background-color: rgba(0, 0, 0, 0.301);
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  flex-direction: column;
+}
+
+.payment_content {
+  width: 300px;
+  padding: 1.4rem 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 2;
+  position: relative;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.payment_content h3 {
+  text-align: center;
+}
+
+.payment_input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.payment_inp {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+}
+
+.payment_inp input[type=email], input[type=number] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #ccc;
+  padding: 0 1rem;
+  border-radius: 5px;
+  outline: none;
+}
+
+.payment_input input[type=submit] {
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: #333;
+  width: 100%;
+  color: #fff; 
+}
+
+.main_payment_container {
+  width: 100%;
+  margin: 1.3rem 0;
+}
+
+.main_payment_container h2 {
+  font-size: 1.5rem;
+  font-weight: lighter;
+  padding:  1.3rem 1rem;
+}
+
+.main_payment_container .book_content table{
+  width: 100%;
+}
+
+.status_success {
+  background-color: rgb(113, 219, 113);
+  color: green;
+  padding: 0.1rem 0;
+  text-align: center;
+  border-radius: 50px;
+}
+
+.status_failed {
+  background-color: rgb(247, 109, 109);
+  color: red;
+  padding: 0.1rem 0;
+  text-align: center;
+  border-radius: 50px;
 }

@@ -49,7 +49,7 @@ const Users = () => {
               </div>
             </div>
             {showChangePassword && (
-              <Suspense fallback={<div>locaing...</div>}>
+              <Suspense fallback={<div className="loader"></div>}>
                 <div className="change_container">
                   <ChangePassword />
                 </div>
@@ -86,7 +86,7 @@ const forms = () => {
         </div>
         <div className="profile_cnp">
           <label>Phone number</label>
-          <input type="text" value={userData?.phone} disabled />
+          <input type="text" value={userData?.phoneNumber} disabled />
         </div>
         <div className="profile_cnp">
           <label>Role</label>

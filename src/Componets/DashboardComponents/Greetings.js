@@ -5,7 +5,7 @@ const Greeting = () => {
     console.log(displayName)
     return (
         <div className='greetings_container'>
-            <h1>Welcome, {displayName}!!!</h1>
+            <h1>Welcome 👋, {displayName}!!!</h1>
         </div>
     )
 }

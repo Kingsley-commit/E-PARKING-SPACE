@@ -6,7 +6,7 @@
 
 body {
   min-height: 100vh;
-  min-width: 100vw;
-  font-family: Arial;
-  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

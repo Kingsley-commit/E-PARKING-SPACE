@@ -15,12 +15,13 @@ const ChangePassword = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify(formData),
         }
       );
 
-      const data = response.text();
+      const data = response.json();
 
       if (response.ok) {
         console.log(data);

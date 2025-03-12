@@ -5,10 +5,6 @@ import "../../Styles/Home.css";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-const BookingForm = lazy(() =>
-  import("../DashboardComponents/DriverLinks/BookingForm")
-);
-
 const LoginComponent = () => {
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -51,18 +47,13 @@ const LoginComponent = () => {
   return (
     <div className="sign_component_container">
       <motion.div
-        initial={{ opacity: 0, y: 500 }}
+        initial={{ opacity: 0, y: 200 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="sign_component_content"
       >
-        <div className="logo_design">
-          <div>
-            <i className="fa-solid fa-car"></i>
-          </div>
-          <h1>EParking System</h1>
-        </div>
+        <h2>Log In</h2>
         <h3>Welcome Back</h3>
         <p>Please enter your details to sign in.</p>
 
