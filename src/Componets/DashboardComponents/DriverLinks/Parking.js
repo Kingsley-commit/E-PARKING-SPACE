@@ -49,10 +49,34 @@ const Parking = () => {
         setShowBookingDetails([data]);
         setShowBookingModal(true);
         localStorage.setItem("Space ID", JSON.stringify(spaceId));
+        fetchSpaces()
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const fetchSpaces = async () => {
+    const id = JSON.parse(localStorage.getItem("Space ID"))
+    try {
+      const response = await fetch(
+        `https://localhost:7040/api/ParkingSpace/GetParkingSpaceById/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+      localStorage.setItem('Booked Space ID', JSON.stringify(data))
+      localStorage.setItem("Amount", data?.amount)
+    } catch (error) {
+      console.error("An error occured", error);
+    }
   };
 
   // Fetch parking spaces
@@ -301,7 +325,7 @@ const Parking = () => {
           {/*Show Booking Details */}
           {showMainBookingDetails && (
             <Suspense fallback={<div className="loader"></div>}>
-              <div>
+              <div onClick={() => setShowMainBookingDetails(false)}>
                 <BookingDetails />
               </div>
             </Suspense>

@@ -25,10 +25,10 @@ const BookingElement = () => {
     <div>
       <div className="main_details_container">
         <div className="main_details_content">
-          <h3>More Details</h3>
+          <h2>Details</h2>
           {bookingDetails.length > 0 ? (
             bookingDetails.map((booking, index) => (
-              <div key={index}>
+              <div key={index} className='book_main_details'>
                 <h4>Driver Details</h4>
                 <p>Name: {booking.driver.name}</p>
                 <p>Email: {booking.driver.email}</p>

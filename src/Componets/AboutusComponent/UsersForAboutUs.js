@@ -8,6 +8,10 @@ import pic6 from "../../assets/pic1updated.png";
 import pic7 from "../../assets/pic7.png";
 import pic8 from "../../assets/pic8.png";
 import pic9 from "../../assets/pic6.png";
+import pic10 from "../../assets/chris2.png"
+import pic11 from "../../assets/mustaphaedit.png"
+import pic12 from "../../assets/cheifedit.png"
+import pic13 from "../../assets/alahji2.png"
 const UserForAboutUS = () => {
   const users = [
     { name: "Okoro John Toc", title: "Digital Forensic Analyst", image: pic9 },
@@ -15,11 +19,12 @@ const UserForAboutUS = () => {
     { name: "Kingsley Ogbanna", title: "Scrum Master", image: pic5 },
     { name: "Onyinye Anokam", title: "Project Manager", image: pic8 },
     { name: "Oyebanjo Olawale", title: "IT Infrastructure Manager", image: pic3 },
-    { name: "", title: "", image: "" },
+    { name: "Adento Azeez Abiidun", title: "Business Development Officer", image: pic13 },
     { name: "Ponle Gwanmak Binde", title: "Application Analyst", image: pic7 },
-    { name: "", title: "", image: "" },
+    { name: "Abu Rodiah", title: "System Analyst", image: pic12 },
     { name: "Oseni Mutiu", title: "Software Engineer", image: pic6 },
-    { name: "User 10", title: "", image: "" },
+    { name: "Mustapha Barakah", title: "UI/UX Designer", image: pic11 },
+    { name: "Christian Anichebe", title: "Backend Developer", image: pic10 },
   ];
 
   return (

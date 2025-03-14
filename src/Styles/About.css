@@ -63,6 +63,10 @@
   background-color: #fff;
 }
 
+.about_header .navbar_container .sidenav_icon{
+  color: #fff;
+}
+
 .about_header .navbar_container .button_container button:nth-child(2):hover{
   color: #fff;
   border: 2px solid #fff;
@@ -147,12 +151,19 @@
 }
 
 .users_box {
-  display: grid;
-  grid-template-columns: repeat(5, 220px);
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
   align-items: center;
   margin: 2.5rem 0;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .users_box .user {
+    width: 300px;
+  }
 }
 
 .users_box .user:nth-child(even) {
@@ -165,6 +176,7 @@
 
 .user {
   height: 280px;
+  width: 208px;
   background-color: #333;
   border-radius: 5px;
   transition: 0.5s;
@@ -196,9 +208,28 @@
   transform: scale(1.1); /* Zoom in the image on hover */
 }
 
-.user:nth-child(6) .image_content {
-  border-radius: 50%;
+.user:nth-child(1) .image_content {
+  margin-top: 15px;
 }
+
+@media (max-width: 768px) {
+  .user:hover .image_content {
+    transform: scale(1); /* Zoom in the image on hover */
+  }
+  .user:nth-child(1) .image_content {
+    margin-top: 0;
+  }
+}
+
+.user:nth-child(2) .image_content {
+  margin-top: -35px;
+}
+
+.user:nth-child(4) .image_content {
+  margin-top: -25px;
+}
+
+
 
 .user:hover{
   background-color: #fff;
@@ -212,7 +243,7 @@
 .user_details {
   background-color: #ffff;
   height: auto;
-  width: 95%;
+  width: 99%;
   position: absolute;
   bottom: 5px;
   transition: 0.5s;
@@ -222,7 +253,7 @@
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 0.5rem;
 }
 
 .user_details h3 {
@@ -340,7 +371,6 @@ section .about_selection_cards:hover i {
     width: 100%;
     gap: 1rem;
     padding: 0 0.9rem;
-    margin-bottom: 30vh;
   }
 
   section .about_selection_cards {

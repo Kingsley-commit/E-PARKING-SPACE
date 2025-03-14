@@ -7,7 +7,9 @@ const HereMap = () => {
   const [map, setMap] = useState(null);
   const platformRef = useRef(null);
   const [suggestions, setSuggestions] = useState([]);
-  const [searchHistory, setSearchHistory] = useState([]);
+  const [searchHistory, setSearchHistory] = useState(
+    JSON.parse(localStorage.getItem("searchHistory")) || []
+  );
 
   useEffect(() => {
     const loadHereMapsScripts = () => {
@@ -88,7 +90,7 @@ const HereMap = () => {
 
     const searchService = platformRef.current.getSearchService();
     searchService.autosuggest(
-      { q: query, at: "6.5244,3.3792" },
+      { q: query, in: "countryCode:NGA" },
       (result) => {
         if (result.items) setSuggestions(result.items);
       },
@@ -106,19 +108,26 @@ const HereMap = () => {
     map.addObject(marker);
 
     setSuggestions([]);
-    setSearchHistory((prev) => [...new Set([title, ...prev])]);
-    localStorage.setItem("searchHistory", JSON.stringify([...new Set([title, ...searchHistory])]));
+    const updatedHistory = [...new Set([title, ...searchHistory])];
+    setSearchHistory(updatedHistory);
+    localStorage.setItem("searchHistory", JSON.stringify(updatedHistory));
   };
 
   const handleSearch = () => {
     const query = searchInputRef.current.value;
     if (!query || !platformRef.current) return;
 
-    const searchService = platformRef.current.getSearchService();
-    searchService.geocode(
-      { q: query },
+    const geocoder = platformRef.current.getGeocodingService();
+    geocoder.geocode(
+      { searchText: query },
       (result) => {
-        if (result.items.length > 0) handleSelectLocation(result.items[0]);
+        if (result.Response.View.length > 0) {
+          const location = result.Response.View[0].Result[0].Location.DisplayPosition;
+          handleSelectLocation({
+            position: { lat: location.Latitude, lng: location.Longitude },
+            title: query,
+          });
+        }
       },
       (error) => console.error("Error fetching location:", error)
     );

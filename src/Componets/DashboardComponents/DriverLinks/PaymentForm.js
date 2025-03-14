@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 const PaymentForm = () => {
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState("");
 
   const handlePayment = async (e) => {
     e.preventDefault(); // Prevent form reload
 
     try {
+      const amount = JSON.parse(localStorage.getItem("Amount")); // Retrieve the amount from localStorage
       const response = await fetch("http://localhost:5001/api/payment/pay", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, amount }),
+        body: JSON.stringify({ email, amount }), // Send the amount along with the email
       });
 
       const data = await response.json();
@@ -49,16 +49,6 @@ const PaymentForm = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-            <div className="payment_inp">
-              <label>Amount: </label>
-              <input
-                type="number"
-                placeholder="Enter the amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
                 required
               />
             </div>

@@ -3,7 +3,6 @@
   height: 100vh;
   position: relative;
   overflow: hidden;
-  font-family: Yu Gothic;
 }
 
 .sidenav {
@@ -434,6 +433,7 @@ li {
 
 .book_content table{
   border-collapse: collapse;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -449,7 +449,7 @@ li {
   padding: 1rem 1.2rem;
   font-weight: lighter;
   text-align: left;
-  font-size: 0.91rem;
+  font-size: 0.8rem;
 }
 
 .book_content thead tr th {
@@ -1274,6 +1274,15 @@ select {
   background-color: #fff;
   padding: 1rem 1.5rem;
   width: auto;
+}
+
+.book_main_details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  gap: 1.2rem;
 }
 
 @media (max-width: 769px) {

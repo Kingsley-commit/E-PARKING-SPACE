@@ -30,7 +30,7 @@ app.post("/api/payment/pay", async (req, res) => {
 
     const paymentData = {
       email,
-      amount: amount * 100, // Convert to kobo
+      amount: amount, // Convert to kobo
       currency: "NGN",
       callback_url: "http://localhost:3000/Dashboard/DriverPayment",
     };

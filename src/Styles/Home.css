@@ -715,6 +715,13 @@ footer {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Thicker box shadow */
 }
 
+@media (max-width: 768px) {
+  .footer {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+}
+
 .cut_footer .logo_design h1 {
   color: #333;
 }
