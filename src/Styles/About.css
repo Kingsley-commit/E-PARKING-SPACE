@@ -219,6 +219,45 @@
   .user:nth-child(1) .image_content {
     margin-top: 0;
   }
+
+  .user:nth-child(1) {
+    min-height: 53vh;
+  }
+
+  .user:nth-child(2) {
+    min-height: 53vh;
+  }
+
+  .user:nth-child(3) {
+    order: -1;
+  }
+
+  .user:nth-child(4) {
+    order: -1;
+    min-height: 53vh;
+  }
+
+  .user:nth-child(9) {
+    order: -1;
+  }
+
+  .user:nth-child(6) {
+    min-height: 53vh;
+  }
+
+
+  .user:nth-child(8) {
+    min-height: 53vh;
+  }
+
+  .user:nth-child(10) {
+    order: -1;
+  }
+
+  .user:nth-child(11) {
+    order: -1;
+  }
+
 }
 
 .user:nth-child(2) .image_content {

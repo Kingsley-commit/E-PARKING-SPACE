@@ -3,7 +3,9 @@ import mapicon from "../../assets/mapIcon.jpg";
 import mapicon2 from "../../assets/mapicon4.jpg";
 import mapicon3 from "../../assets/mapicon3.jpg";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 const Maps = () => {
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0, y: 100 }}
@@ -37,6 +39,7 @@ const Maps = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: false }}
+            onClick={() => {navigate("./LoginComponent")}}
           >
             Get Started
           </motion.button>

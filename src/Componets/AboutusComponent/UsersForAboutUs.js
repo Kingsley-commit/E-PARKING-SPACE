@@ -19,12 +19,12 @@ const UserForAboutUS = () => {
     { name: "Ogbonna Kingsley Victor", title: "Scrum Master", image: pic5 },
     { name: "Onyinye Anokam", title: "Project Manager", image: pic8 },
     { name: "Oyebanjo Olawale", title: "IT Infrastructure Manager", image: pic3 },
-    { name: "Adento Azeez Abiidun", title: "Business Development Officer", image: pic13 },
+    { name: "Christian Anichebe", title: "Backend Developer", image: pic10 },
     { name: "Ponle Gwanmak Binde", title: "Application Analyst", image: pic7 },
     { name: "Olasupo Lateef Oyewale", title: "System Analyst", image: pic12 },
     { name: "Oseni Mutiu", title: "Software Engineer", image: pic6 },
     { name: "Mustapha Barakah", title: "UI/UX Designer", image: pic11 },
-    { name: "Christian Anichebe", title: "Backend Developer", image: pic10 },
+    { name: "Adento Azeez Abiidun", title: "Business Developer Officer", image: pic13 },
   ];
 
   return (
