@@ -330,7 +330,7 @@
 }
 
 .body_content .car_image {
-  position: fixed;
+  position: absolute;
   right: 8%;
   top: -5%;
   height: auto;

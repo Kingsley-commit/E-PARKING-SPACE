@@ -14,14 +14,14 @@ import pic12 from "../../assets/cheifedit.png"
 import pic13 from "../../assets/alahji2.png"
 const UserForAboutUS = () => {
   const users = [
-    { name: "Okoro John Toc", title: "Digital Forensic Analyst", image: pic9 },
+    { name: "Okoro John Tochukwu", title: "Digital Forensic Analyst", image: pic9 },
     { name: "Khadijat Yusuf", title: "Business Intelligent Analyst", image: pic2 },
-    { name: "Kingsley Ogbanna", title: "Scrum Master", image: pic5 },
+    { name: "Ogbonna Kingsley Victor", title: "Scrum Master", image: pic5 },
     { name: "Onyinye Anokam", title: "Project Manager", image: pic8 },
     { name: "Oyebanjo Olawale", title: "IT Infrastructure Manager", image: pic3 },
     { name: "Adento Azeez Abiidun", title: "Business Development Officer", image: pic13 },
     { name: "Ponle Gwanmak Binde", title: "Application Analyst", image: pic7 },
-    { name: "Abu Rodiah", title: "System Analyst", image: pic12 },
+    { name: "Olasupo Lateef Oyewale", title: "System Analyst", image: pic12 },
     { name: "Oseni Mutiu", title: "Software Engineer", image: pic6 },
     { name: "Mustapha Barakah", title: "UI/UX Designer", image: pic11 },
     { name: "Christian Anichebe", title: "Backend Developer", image: pic10 },
