@@ -207,7 +207,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #333;
+    background-color: #fff;
     transition: 0.5s;
     overflow-x: hidden;
     gap: 1.5rem;
@@ -220,6 +220,15 @@
 
   .nav_link {
     font-size: 1.3rem;
+    color: #fff;
+  }
+
+  .button_container {
+    flex-direction: column;
+  }
+
+  .button_container button{
+    width: 200px;
   }
 
   .sidenav_icon {
@@ -445,7 +454,7 @@
 }
 
 .map_content .intro h1{
-  font-size: 2.4rem;
+  font-size: 2rem;
   margin: 1.2rem 0;
 }
 
