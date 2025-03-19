@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
+const API_URL = "https://e-parking-space-for-payment-backend.onrender.com"; // ✅ Updated Backend URL
+
 const PaymentForm = () => {
   const [email, setEmail] = useState("");
 
@@ -8,8 +10,8 @@ const PaymentForm = () => {
     e.preventDefault(); // Prevent form reload
 
     try {
-      const amount = JSON.parse(localStorage.getItem("Amount")); // Retrieve the amount from localStorage
-      const response = await fetch("http://localhost:5001/api/payment/pay", {
+      const amount = JSON.parse(localStorage.getItem("Amount")); // Retrieve amount from localStorage
+      const response = await fetch(`${API_URL}/api/payment/pay`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
