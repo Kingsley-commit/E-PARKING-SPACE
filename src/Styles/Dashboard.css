@@ -1406,6 +1406,6 @@ select {
   background-color: rgb(247, 109, 109);
   color: red;
   padding: 0.1rem 0;
-  text-align: center;
+  text-align: center; 
   border-radius: 50px;
 }
