@@ -11,6 +11,7 @@ const Footer = () => {
       viewport={{ once: false }}
       className="footer"
     >
+      <div className="footer_content">
       <div className="logo_design">
         <div>
           <i className="fa-solid fa-car"></i>
@@ -39,7 +40,7 @@ const Footer = () => {
           <input type="submit" value="Subscribe"></input>
         </div>
       </div>
-
+</div>
       <div className="copy">
         &copy;
         {date.toLocaleDateString("en-US", {

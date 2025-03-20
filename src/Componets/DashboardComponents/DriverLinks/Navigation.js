@@ -122,6 +122,7 @@ const Navigation = () => {
                   <div className="navigate_buttons">
                     <button onClick={() => { bookFunc() }}>Book</button>
                   </div>
+                  <div className="navigate_info"><i className="fas fa-info-circle"></i>The driver info is displayed when you select from the owner to view.</div>
                 </div>
               ) : (
                 <NothingFound />

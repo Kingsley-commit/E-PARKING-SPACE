@@ -1090,6 +1090,17 @@ select {
   width: 300px;
 }
 
+.navigate_info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-weight: lighter;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  width: 300px;
+  margin: 1rem 0;
+}
+
 
 .details_container {
   background-color: #fff;
@@ -1303,6 +1314,7 @@ select {
  z-index: 5;
  font-size: 2.5rem;
 }
+
 .payment_container {
   position: fixed;
   height: 100%;
