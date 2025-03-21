@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import pic1 from "../../assets/ProfilePic1.png";
 import pic2 from "../../assets/ProfilePic2.png";
 import pic3 from "../../assets/ProfilePic3.png";
-import pic4 from "../../assets/ProfilePic4.png";
-import pic5 from "../../assets/kingsley2.png";
+import pic5 from "../../assets/Pic5.png";
 import pic6 from "../../assets/pic1updated.png";
 import pic7 from "../../assets/pic7.png";
 import pic8 from "../../assets/pic8.png";
