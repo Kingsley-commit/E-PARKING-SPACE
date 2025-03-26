@@ -294,6 +294,9 @@
 .body_text div:nth-child(1) {
   font-size: 2.4rem;
   color: #333;
+}
+
+.body_text div h1:nth-child(2) {
   white-space: nowrap;
   overflow: hidden;
   animation: typing 5.5s steps(50, end), blink 0.75s step-end infinite;
