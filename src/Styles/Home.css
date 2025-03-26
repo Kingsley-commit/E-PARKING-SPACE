@@ -299,6 +299,7 @@
 .body_text .h1_type h1{
   white-space: nowrap;
   overflow: hidden;
+  color: red;
   animation: typing 5.5s steps(50, end), blink 0.75s step-end infinite;
 }
 
