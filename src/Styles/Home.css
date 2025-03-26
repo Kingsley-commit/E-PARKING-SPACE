@@ -296,7 +296,7 @@
   color: #333;
 }
 
-.body_text div h1:nth-child(2) {
+.body_text .h1_type h1{
   white-space: nowrap;
   overflow: hidden;
   animation: typing 5.5s steps(50, end), blink 0.75s step-end infinite;

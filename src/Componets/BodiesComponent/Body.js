@@ -44,6 +44,7 @@ const Body = () => {
             animate={controls}
             variants={variants}
             transition={{ duration: 0.9 }}
+            className="h1_type"
           >
             Find Your<h1><i className="fas fa-search"></i>Parking Space!</h1>
           </motion.div>
