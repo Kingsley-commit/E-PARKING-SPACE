@@ -11,7 +11,7 @@ const ForgotPassword = () => {
     e.preventDefault()
     try {
       const response = await fetch(
-        "https://localhost:7040/api/Account/ForgotPassword",
+        "https://smart-parking-system-backend-3.onrender.com/api/Account/ForgotPassword",
         {
           method: "POST",
           headers: {

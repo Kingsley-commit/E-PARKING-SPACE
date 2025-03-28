@@ -8,7 +8,7 @@ const Weather = () => {
   const [nav, setNav] = useState(false);
 
   useEffect(() => {
-    fetch("https://localhost:7040/WeatherForecast")
+    fetch("https://smart-parking-system-backend-3.onrender.com/WeatherForecast")
       .then((res) => res.json())
       .then((data) => {
         setWeather(data);

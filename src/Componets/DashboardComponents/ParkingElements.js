@@ -5,7 +5,7 @@ const ParkingElement = () => {
   const [parkingLot, setParkingLot] = useState([]);
 
   const fetchParkingLots = () => {
-    fetch("https://localhost:7040/api/ParkingSpace/GetAllParkingSpaces", {
+    fetch("https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/GetAllParkingSpaces", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ const ParkingElement = () => {
       console.log("Attempting to delete the parking lot with ID:", id);
       try {
         const response = await fetch(
-          `https://localhost:7040/api/ParkingSpace/DeleteParkingSpace/${id}`,
+          `https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/DeleteParkingSpace/${id}`,
           {
             method: "DELETE",
             headers: {

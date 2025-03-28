@@ -6,7 +6,7 @@ const BookingElement = () => {
 
   useEffect(() => {
     const spaceId = JSON.parse(localStorage.getItem('Space ID'));
-    fetch(`https://localhost:7040/api/Booking/getDetailsForBooking/${spaceId}`, {
+    fetch(`https://smart-parking-system-backend-3.onrender.com/api/Booking/getDetailsForBooking/${spaceId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

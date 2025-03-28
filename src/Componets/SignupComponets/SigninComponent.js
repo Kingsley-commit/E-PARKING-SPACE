@@ -55,7 +55,7 @@ const SigninComponentForDriver = () => {
     if (validate()) {
       try {
         const response = await fetch(
-          "https://localhost:7040/api/Account/Registration",
+          "https://smart-parking-system-backend-3.onrender.com/api/Account/Registration",
           {
             method: "POST",
             headers: {

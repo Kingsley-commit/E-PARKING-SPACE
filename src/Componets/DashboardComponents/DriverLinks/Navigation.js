@@ -13,7 +13,7 @@ const Navigation = () => {
 
   useEffect(() => {
     if (id) {
-      fetch(`https://localhost:7040/api/Booking/GetBookingById/${id}`, {
+      fetch(`https://smart-parking-system-backend-3.onrender.com/api/Booking/GetBookingById/${id}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -55,7 +55,7 @@ const Navigation = () => {
 
   const getBookingAmmendentDetails = () => {
     const id = JSON.parse(localStorage.getItem('Booking ID'));
-    fetch(`https://localhost:7040/api/Booking/GetBookingById/${id}`, {
+    fetch(`https://smart-parking-system-backend-3.onrender.com/api/Booking/GetBookingById/${id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

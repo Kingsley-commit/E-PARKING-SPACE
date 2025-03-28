@@ -48,7 +48,7 @@ const ParkingLotForm = () => {
     if (validate()) {
       try {
         const response = await fetch(
-          "https://localhost:7040/api/ParkingSpace/AddParkingSpace",
+          "https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/AddParkingSpace",
           {
             method: "POST",
             headers: {

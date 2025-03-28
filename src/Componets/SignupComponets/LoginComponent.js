@@ -25,7 +25,7 @@ const LoginComponent = () => {
   const handleClickLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://localhost:7040/api/Account/Login", {
+      const response = await fetch("https://smart-parking-system-backend-3.onrender.com/api/Account/Login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, password }),

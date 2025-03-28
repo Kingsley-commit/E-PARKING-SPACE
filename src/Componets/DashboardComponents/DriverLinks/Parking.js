@@ -28,7 +28,7 @@ const Parking = () => {
 
   // Function to handle booking
   const handleBookElement = (spaceId) => {
-    fetch(`https://localhost:7040/api/Booking/AddBooking`, {
+    fetch(`https://smart-parking-system-backend-3.onrender.com/api/Booking/AddBooking`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const Parking = () => {
     const id = JSON.parse(localStorage.getItem("Space ID"))
     try {
       const response = await fetch(
-        `https://localhost:7040/api/ParkingSpace/GetParkingSpaceById/${id}`,
+        `https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/GetParkingSpaceById/${id}`,
         {
           method: "GET",
           headers: {
@@ -81,7 +81,7 @@ const Parking = () => {
 
   // Fetch parking spaces
   useEffect(() => {
-    fetch(`https://localhost:7040/api/ParkingSpace/GetAllParkingSpaces`, {
+    fetch(`https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/GetAllParkingSpaces`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const Parking = () => {
 
   const getDetails = () => {
     setShowMainBookingDetails(true);
-    fetch(`https://localhost:7040/api/ParkingSpace/GetAllParkingSpaces`, {
+    fetch(`https://smart-parking-system-backend-3.onrender.com/api/ParkingSpace/GetAllParkingSpaces`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -114,7 +114,7 @@ const Parking = () => {
 
   // Fetch parking owners
   useEffect(() => {
-    fetch("https://localhost:7040/api/ParkingOwner/GetAllParkingOwners", {
+    fetch("https://smart-parking-system-backend-3.onrender.com/api/ParkingOwner/GetAllParkingOwners", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -133,7 +133,7 @@ const Parking = () => {
     console.log("Viewing parking details for:", id);
     try {
       const response = await fetch(
-        `https://localhost:7040/api/ParkingOwner/GetParkingOwnerById/${id}`,
+        `https://smart-parking-system-backend-3.onrender.com/api/ParkingOwner/GetParkingOwnerById/${id}`,
         {
           method: "GET",
           headers: {
