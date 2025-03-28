@@ -47,7 +47,7 @@ const Body = () => {
             className="h1_type"
           >
             Find Your<h1><i className="fas fa-search"></i>Parking Space!</h1>
-          </motion.div>
+        </motion.div>
           <motion.div
             initial="hidden"
             animate={controls}
