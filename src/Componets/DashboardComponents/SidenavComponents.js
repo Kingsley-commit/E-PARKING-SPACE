@@ -48,11 +48,6 @@ const Sidenav = () => {
         onClick: () => handleClickLink("/Dashboard/UserDashboard"),
       },
       {
-        icon: "fa fa-wallet",
-        name: "Payments",
-        onClick: () => handleClickLink("/Dashboard/DriverPayment"),
-      },
-      {
         icon: "fa fa-road",
         name: "Details/Navigation",
         onClick: () => handleClickLink("/Dashboard/Navigation"),
