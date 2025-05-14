@@ -1,70 +1,206 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# E‑Parking System
 
-In the project directory, you can run:
+> A user‑friendly web application for real‑time parking reservation and management.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📋 Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. [About the Project](#about-the-project)  
+2. [Features](#features)  
+3. [Tech Stack](#tech-stack)  
+4. [Getting Started](#getting-started)  
+   - [Prerequisites](#prerequisites)  
+   - [Installation](#installation)  
+   - [Configuration](#configuration)  
+   - [Running Locally](#running-locally)  
+5. [Usage](#usage)  
+6. [Testing](#testing)  
+7. [Project Structure](#project-structure)  
+8. [Roadmap](#roadmap)  
+9. [Contributing](#contributing)  
+10. [License](#license)  
+11. [Team](#team)
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## About the Project
 
-### `npm run build`
+E‑Parking System streamlines urban parking by allowing drivers to **search**, **reserve**, and **pay** for parking spots in real time, and letting facility managers **monitor**, **adjust**, and **report**—all from an intuitive dashboard.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> **Built**: April 2024  
+> **Methodology**: Agile (9 sprints)  
+> **Team Size**: 11 members  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<details>
+  <summary>🛠️ Objectives & Approach</summary>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  1. **Seamless UX**  
+     - Mobile‑first, WCAG‑compliant  
+     - Instant slot search with map integration  
 
-### `npm run eject`
+  2. **Agile Delivery**  
+     - Sprint planning, daily stand‑ups, retrospectives  
+     - Test‑Driven Development & CI/CD pipelines  
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  3. **Scalability & Quality**  
+     - Microservices‑friendly architecture  
+     - Automated blue/green deployments  
+     - Unit, integration, E2E, and performance testing  
+</details>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ✨ Features
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **User Portal**  
+  - Secure JWT authentication (signup/login)  
+  - Live availability map (Google Maps/OpenStreetMap)  
+  - Filters: distance, price, accessibility  
+  - One‑click booking + SMS/email confirmation  
 
-## Learn More
+- **Payment Module**  
+  - Paystack integration (cards & wallets)  
+  - Encrypted transaction logs  
+  - Refund processing  
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Admin Dashboard**  
+  - Real‑time occupancy & revenue charts  
+  - Dynamic pricing controls  
+  - Exportable PDF & Excel reports  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Notifications**  
+  - Session reminders via email/SMS  
+  - Customizable user preferences  
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 🛠 Tech Stack
 
-### Analyzing the Bundle Size
+| Layer         | Technology                              |
+| ------------- | --------------------------------------- |
+| **Frontend**  | React · Tailwind CSS · JavaScript       |
+| **Backend**   | .NET Core (C#) · RESTful APIs · JWT     |
+| **Database**  | SQL Server                              |
+| **CI/CD**     | GitHub Actions · Docker · Vercel        |
+| **Testing**   | Jest · NUnit · Cypress · JMeter         |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 🚀 Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Prerequisites
 
-### Advanced Configuration
+- [Node.js](https://nodejs.org/) ≥ v16  
+- [.NET SDK](https://dotnet.microsoft.com/) ≥ 6.0  
+- [SQL Server](https://www.microsoft.com/sql-server) instance  
+- Paystack account & API keys  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Installation
 
-### Deployment
+1. **Clone the repo**  
+   ```bash
+   git clone https://github.com/Kingsley-commit/e-parking-system.git
+   cd e-parking-system
+2. **Configure Environment**
+   Copy example env files and fill in credentials:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   cp backend/.env.example backend/.env
+   cp frontend/.env.example frontend/.env
+   ```
 
-### `npm run build` fails to minify
+   * `DB_CONNECTION_STRING`
+   * `PAYSTACK_SECRET_KEY`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Running Locally
+
+#### Backend
+
+```bash
+cd backend
+dotnet restore
+dotnet ef database update      # Run migrations
+dotnet run                     # Starts API on http://localhost:5000
+```
+
+#### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev                    # Starts UI on http://localhost:3000
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## 🧪 Testing
+
+* **Backend Unit & Integration**
+
+  ```bash
+  cd backend
+  dotnet test
+  ```
+
+* **Frontend Unit**
+
+  ```bash
+  cd frontend
+  npm test
+  ```
+
+* **E2E (Cypress)**
+
+  ```bash
+  cd frontend
+  npm run cypress:open
+  ```
+
+* **Performance (JMeter)**
+
+  ```bash
+  jmeter -n -t tests/load_test.jmx
+  ```
+
+---
+
+## 🗂 Project Structure
+
+```
+e-parking-system/
+├── backend/         # C# API & DB migrations
+├── frontend/        # React + Tailwind UI
+├── docs/            # Architecture diagrams & sprint reports
+├── scripts/         # CI/CD & deployment automation
+├── tests/           # E2E & load test plans
+└── README.md
+```
+
+---
+
+## 🎯 Roadmap
+
+* [x] Core booking & payment
+* [x] Admin analytics & reporting
+* [ ] Predictive slot suggestions (ML)
+* [ ] Smart‑city integrations (IoT sensors)
+* [ ] Mobile companion app
+
+---
+
+## 🤝 Contributing
+
+1. **Fork**
+2. **Branch**: `git checkout -b feat/your-feature`
+3. **Commit**: `git commit -m "Add amazing feature"`
+4. **Push**: `git push origin feat/your-feature`
+5. **PR** & await review
+
+> ✔️ Ensure all tests pass & adhere to coding standards.
+> 📝 Please read [CODE\_OF\_CONDUCT.md](CODE_OF_CONDUCT.md).
+
+
